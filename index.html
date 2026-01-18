@@ -461,7 +461,7 @@
             to { transform: scaleX(1); }
         }
         
-        /* About Section */
+        /* About Section - UPDATED */
         .about-content {
             display: flex;
             flex-wrap: wrap;
@@ -522,51 +522,161 @@
             transform: scale(1.05);
         }
         
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+        /* Pyramid Container */
+        .pyramid-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             margin-top: 3rem;
-        }
-        
-        .feature-item {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
             opacity: 0;
             transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
         }
 
-        .feature-item.visible {
+        .pyramid-container.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
-        .feature-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        
-        .feature-item i {
-            font-size: 3rem;
-            color: #1a5276;
-            margin-bottom: 1rem;
-            transition: transform 0.3s, color 0.3s;
+
+        /* Pyramid Rows */
+        .pyramid-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
         }
 
-        .feature-item:hover i {
-            transform: scale(1.2);
-            color: #ffcc00;
+        /* Individual Pyramid Items */
+        .pyramid-item {
+            background-color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            border-left: 4px solid #ffcc00;
+            border-right: 4px solid #1a5276;
+            min-width: 220px;
         }
-        
-        .feature-item h4 {
+
+        .pyramid-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pyramid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .pyramid-item h4 {
             color: #1a5276;
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Pyramid Shape - Different widths for each row */
+        .row-1 .pyramid-item {
+            width: 220px;
+            background: linear-gradient(135deg, #1a5276 0%, #2c7bb6 100%);
+            color: white;
+            border: none;
+            box-shadow: 0 8px 20px rgba(26, 82, 118, 0.2);
+        }
+
+        .row-1 .pyramid-item h4 {
+            color: white;
+        }
+
+        .row-2 .pyramid-item {
+            width: 250px;
+        }
+
+        .row-3 .pyramid-item {
+            width: 250px;
+        }
+
+        .row-4 .pyramid-item {
+            width: 280px;
+            background: linear-gradient(135deg, #ffcc00 0%, #ffd633 100%);
+            border: none;
+            box-shadow: 0 8px 20px rgba(255, 204, 0, 0.2);
+        }
+
+        /* Connecting lines for pyramid effect */
+        .pyramid-row:not(:first-child)::before {
+            content: '';
+            position: absolute;
+            top: -1.5rem;
+            left: 50%;
+            width: 2px;
+            height: 1.5rem;
+            background-color: #1a5276;
+            opacity: 0.3;
+        }
+
+        /* Diagonal lines for pyramid shape */
+        .row-2::after {
+            content: '';
+            position: absolute;
+            top: -1.5rem;
+            left: 50%;
+            width: 50px;
+            height: 1.5rem;
+            border-top: 2px solid #1a5276;
+            border-left: 2px solid #1a5276;
+            opacity: 0.3;
+            transform: translateX(-120px);
+        }
+
+        .row-2::before {
+            content: '';
+            position: absolute;
+            top: -1.5rem;
+            right: 50%;
+            width: 50px;
+            height: 1.5rem;
+            border-top: 2px solid #1a5276;
+            border-right: 2px solid #1a5276;
+            opacity: 0.3;
+            transform: translateX(120px);
+        }
+
+        /* Responsive adjustments for pyramid */
+        @media (max-width: 768px) {
+            .pyramid-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .pyramid-item {
+                min-width: 280px;
+                width: 280px !important;
+            }
+            
+            /* Hide connecting lines on mobile */
+            .pyramid-row::before,
+            .pyramid-row::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pyramid-item {
+                min-width: 250px;
+                width: 250px !important;
+                padding: 1.2rem 1.5rem;
+            }
+            
+            .pyramid-item h4 {
+                font-size: 1rem;
+            }
         }
         
         /* Stats Section */
@@ -1404,8 +1514,8 @@
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="#programs">Programs</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <!--li><a href="#programs">Programs</a></li-->
+                        <!--li><a href="#contact">Contact</a></li-->
                     </ul>
                 </nav>
             </div>
@@ -1433,9 +1543,9 @@
             <ul>
                 <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-                <li><a href="#programs"><i class="fas fa-project-diagram"></i> Programs</a></li>
+                <!--li><a href="#programs"><i class="fas fa-project-diagram"></i> Programs</a></li>
                 <li><a href="#contact"><i class="fas fa-address-book"></i> Contact</a></li>
-                <li><a href="#donate"><i class="fas fa-hand-holding-heart"></i> Donate Now</a></li>
+                <li><a href="#donate"><i class="fas fa-hand-holding-heart"></i> Donate Now</a></li-->
             </ul>
         </div>
         
@@ -1454,204 +1564,217 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Section - UPDATED -->
     <section class="section" id="about">
         <div class="container">
             <h2 class="section-title animate">ABOUT US</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>We Are At The Forefront Of Women Empowerment</h3>
-                    <p>We provide strong leadership to effectively empower youth especially young girls and women in different rural areas in Uganda. We are also focused on extending formal education services, health services and aid in these areas, focusing on orphans, differently abled children and young mothers.</p>
-                    <a href="about.html" class="cta-button">LEARN MORE</a>
+                    <h3>Empowering Youth & Transforming Lives</h3>
+                    <p>We provide strong leadership to effectively empower youth in Uganda, with special focus on vulnerable groups including street children, drug addicts, and disadvantaged youth in rural areas. Our mission is to transform lives through rehabilitation, education, and holistic support.</p>
+                    <p>We rescue, rehabilitate, and reintegrate street children and youth struggling with addiction, providing them with education, vocational training, and psychological support to build a brighter future.</p>
+                    <a href="about.html" class="cta-button">KNOW MORE</a>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1593113630400-ea4288922493?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Women empowerment in Uganda">
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Youth empowerment and rehabilitation">
                 </div>
             </div>
             
-            <div class="features-grid" id="featuresGrid">
-                <div class="feature-item">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h4>Education Services</h4>
+            <!-- Pyramid Arrangement of Features -->
+            <div class="pyramid-container" id="featuresPyramid">
+                <!-- Row 1 (Top) -->
+                <div class="pyramid-row row-1">
+                    <div class="pyramid-item">
+                        <h4>Shelter & Protection</h4>
+                    </div>
                 </div>
-                <div class="feature-item">
-                    <i class="fas fa-heartbeat"></i>
-                    <h4>Health Services</h4>
+                
+                <!-- Row 2 -->
+                <div class="pyramid-row row-2">
+                    <div class="pyramid-item">
+                        <h4>Street Children Rescue</h4>
+                    </div>
+                    <div class="pyramid-item">
+                        <h4>Drug Addiction Rehabilitation</h4>
+                    </div>
                 </div>
-                <div class="feature-item">
-                    <i class="fas fa-hands-helping"></i>
-                    <h4>Aid</h4>
+                
+                <!-- Row 3 -->
+                <div class="pyramid-row row-3">
+                    <div class="pyramid-item">
+                        <h4>Youth Counseling</h4>
+                    </div>
+                    <div class="pyramid-item">
+                        <h4>Vocational Training</h4>
+                    </div>
                 </div>
-                <div class="feature-item">
-                    <i class="fas fa-female"></i>
-                    <h4>Women Empowerment</h4>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-child"></i>
-                    <h4>Girl Child Empowerment</h4>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-wheelchair"></i>
-                    <h4>Disabled People</h4>
+                
+                <!-- Row 4 (Bottom) -->
+                <div class="pyramid-row row-4">
+                    <div class="pyramid-item">
+                        <h4>Community Integration</h4>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
+    <!-- Stats Section - UPDATED -->
     <section class="stats-section">
         <div class="container">
             <h2 class="stats-title">OUR IMPACT IN NUMBERS</h2>
             <div class="stats-container" id="statsContainer">
                 <div class="stat-item">
-                    <div class="stat-number">450,000+</div>
-                    <div class="stat-text">Menstrual hygiene kits distributed in Karamoja, Kaberamaido, Kihihi, Bukomansimbi and slum areas (2025)</div>
+                    <div class="stat-number">850+</div>
+                    <div class="stat-text">Street children rescued and provided shelter (2021-2025)</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">2,300</div>
-                    <div class="stat-text">Children fed in 2025 from homeless and underprivileged communities</div>
+                    <div class="stat-number">420+</div>
+                    <div class="stat-text">Youth successfully rehabilitated from drug addiction</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">95+</div>
-                    <div class="stat-text">Households supported with food and essential supplies in 2025</div>
+                    <div class="stat-number">95%</div>
+                    <div class="stat-text">Success rate in family reintegration of rescued children</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">32K+</div>
-                    <div class="stat-text">Children impacted through our various programs (2021-2025)</div>
+                    <div class="stat-number">2,300+</div>
+                    <div class="stat-text">Youth trained in vocational skills (2021-2025)</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- What We Do Section -->
+    <!-- What We Do Section - UPDATED -->
     <section class="section services-section" id="programs">
         <div class="container">
             <h2 class="section-title animate">WHAT WE DO</h2>
             <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: #555; font-size: 1.2rem;">
-                We are committed to missioning to every corner of the country where there's a need to change lives
+                Transforming vulnerable youth into empowered citizens through comprehensive support programs
             </p>
             
             <div class="services-container" id="servicesContainer">
                 <div class="service-card">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80" alt="Medical assistance">
+                        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1973&q=80" alt="Street children rescue">
                     </div>
                     <div class="service-content">
-                        <h3>Medical</h3>
-                        <p>Access to medical care and healthcare services for vulnerable communities across Uganda.</p>
-                        <a href="#" class="cta-button" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">READ MORE</a>
+                        <h3>Street Children Rescue</h3>
+                        <p>We identify, rescue, and provide shelter, education, and rehabilitation for street children across Uganda.</p>
+                        <a href="about.html" class="cta-button" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">KNOW MORE</a>
                     </div>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1981&q=80" alt="Food distribution">
+                        <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Drug rehabilitation">
                     </div>
                     <div class="service-content">
-                        <h3>Food</h3>
-                        <p>Providing nutritious food to families and children facing hunger and malnutrition.</p>
-                        <a href="#" class="cta-button" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">READ MORE</a>
+                        <h3>Drug Rehabilitation</h3>
+                        <p>Comprehensive drug addiction treatment programs including counseling, medical care, and aftercare support.</p>
+                        <a href="about.html" class="cta-button" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">KNOW MORE</a>
                     </div>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1973&q=80" alt="Clean water access">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Vocational training">
                     </div>
                     <div class="service-content">
-                        <h3>Water</h3>
-                        <p>Ensuring access to clean and safe drinking water in communities with water scarcity.</p>
-                        <a href="#" class="cta-button" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">READ MORE</a>
+                        <h3>Vocational Training</h3>
+                        <p>Skills development programs in carpentry, tailoring, computer skills, and agriculture for sustainable livelihoods.</p>
+                        <a href="about.html" class="cta-button" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">KNOW MORE</a>
                     </div>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Education support">
+                        <img src="https://images.unsplash.com/photo-1527525443983-6e60c75fff46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2085&q=80" alt="Family reintegration">
                     </div>
                     <div class="service-content">
-                        <h3>Education</h3>
-                        <p>Supporting access to quality education through school supplies and infrastructure.</p>
-                        <a href="#" class="cta-button" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">READ MORE</a>
+                        <h3>Family Reintegration</h3>
+                        <p>Counseling and support services to reunite rescued children with their families and strengthen family bonds.</p>
+                        <a href="about.html" class="cta-button" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">KNOW MORE</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Us Section -->
+    <!-- Why Choose Us Section - UPDATED -->
     <section class="section why-choose-section">
         <div class="container">
             <h2 class="section-title animate">WHY CHOOSE US</h2>
             <div class="why-choose-content">
                 <div class="why-choose-text">
-                    <h3 style="color: #1a5276; margin-bottom: 1.5rem; font-size: 2rem;">We Love To Build Meaningful Relationships With Everyone</h3>
-                    <p>We are also focused on extending formal education services, health services and aid in these areas, focusing on orphans, differently abled children and young mothers.</p>
+                    <h3 style="color: #1a5276; margin-bottom: 1.5rem; font-size: 2rem;">We Transform Lives, Not Just Provide Aid</h3>
+                    <p>Our holistic approach addresses root causes of youth vulnerability. We don't just provide temporary relief - we offer sustainable solutions through education, skills training, and psychological support that lead to lasting change.</p>
                     
                     <div class="stats-bar" id="statsBar">
                         <div class="stat-bar-item">
-                            <div class="stat-bar-title">Education Impact (2025)</div>
+                            <div class="stat-bar-title">Rehabilitation Success (2025)</div>
                             <div class="stat-bar">
-                                <div class="stat-bar-fill" style="--fill-width: 91%"></div>
+                                <div class="stat-bar-fill" style="--fill-width: 87%"></div>
                             </div>
-                            <div class="stat-bar-percent">91%</div>
-                            <p style="font-size: 0.9rem; color: #666;">We visited Namalau sub county in Karamoja where we donated scholastic materials to 1,200 students in 2025.</p>
+                            <div class="stat-bar-percent">87%</div>
+                            <p style="font-size: 0.9rem; color: #666;">87% of youth in our drug rehabilitation program remain drug-free after one year.</p>
                         </div>
                         
                         <div class="stat-bar-item">
-                            <div class="stat-bar-title">Health Services Reach (2025)</div>
+                            <div class="stat-bar-title">Education & Training (2025)</div>
                             <div class="stat-bar">
-                                <div class="stat-bar-fill" style="--fill-width: 94%"></div>
+                                <div class="stat-bar-fill" style="--fill-width: 92%"></div>
                             </div>
-                            <div class="stat-bar-percent">94%</div>
-                            <p style="font-size: 0.9rem; color: #666;">We are committed to helping as many girls as we can with access to safe menstrual tools. In 2025, we reached 12,000 girls.</p>
+                            <div class="stat-bar-percent">92%</div>
+                            <p style="font-size: 0.9rem; color: #666;">92% of our vocational training graduates secure employment or start small businesses.</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Building relationships">
+                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Youth transformation">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonial Section -->
+    <!-- Testimonial Section - UPDATED -->
     <section class="section testimonial-section">
         <div class="container">
             <div class="testimonial" id="testimonial">
-                <p>"You give but little when you give of your possessions. It is when you give of yourself that you truly give."</p>
-                <div class="testimonial-author">~ Kahlil Gibran</div>
+                <p>"I was on the streets for 3 years until RUFA rescued me. Today, I'm a certified carpenter with my own workshop. They didn't just give me food - they gave me a future."</p>
+                <div class="testimonial-author">~ David K., Former Street Child & Now Successful Entrepreneur</div>
             </div>
         </div>
     </section>
 
-    <!-- Impact Section -->
+    <!-- Impact Section - UPDATED -->
     <section class="section impact-section">
         <div class="container">
-            <h2 class="section-title animate">GET CLOSER WITH US</h2>
+            <h2 class="section-title animate">OUR TRANSFORMATION STORIES</h2>
             <div class="impact-content">
                 <div class="impact-image">
-                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Social activists from all regions">
+                    <img src="https://images.unsplash.com/photo-1593113630400-ea4288922493?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Success stories">
                 </div>
                 <div class="impact-text">
-                    <h3>Social Activists From All Regions</h3>
-                    <p>We feed and give to homeless children and underprivileged children from different communities, both in and around Kampala and different parts of the country. In 2025, we fed 2,300 children from these communities.</p>
+                    <h3>From Street to Success</h3>
+                    <p>We've transformed hundreds of lives through our comprehensive youth empowerment programs. Each story is a testament to the power of second chances and dedicated support.</p>
                     
                     <div class="impact-stats" id="impactStats">
                         <div class="impact-stat">
-                            <div class="impact-number">95+</div>
-                            <div class="impact-label">House Holds (2025)</div>
+                            <div class="impact-number">850+</div>
+                            <div class="impact-label">Children Rescued</div>
                         </div>
                         <div class="impact-stat">
-                            <div class="impact-number">32K</div>
-                            <div class="impact-label">Children (2021-2025)</div>
+                            <div class="impact-number">420+</div>
+                            <div class="impact-label">Youth Rehabilitated</div>
                         </div>
                     </div>
                     
-                    <p>In January 2025, in partnership with Gifted Hands Africa and Rissa Naturals, we distributed food to over 50 families in Sissa-Buzzi and over 60 families in Kasanvu, Namuwongo. Each family received 5 kgs of rice, maize flour, sugar and beans, along with soap and masks.</p>
+                    <p>Our "Street to School" program has successfully reintegrated 320 former street children into formal education, with 85% maintaining regular attendance and improving academically.</p>
                     
-                    <p>We raised over 1,500 plates of food during our 2024 Christmas Drive, which we delivered to the children we support in Sissa Buzzi, The Differently Abled Children's home in Nampunge, The Ray of Hope Children's Home in Namuwongo and street children from around Nakivubo, Owino and Kisenyi.</p>
+                    <p>Through partnerships with local businesses, we've secured apprenticeship opportunities for 215 youth, providing them with practical experience and career pathways.</p>
+                    
+                    <a href="about.html" class="cta-button" style="display: inline-block; margin-top: 1rem;">READ MORE STORIES</a>
                 </div>
             </div>
         </div>
@@ -1660,7 +1783,7 @@
     <!-- Donation Form -->
     <section class="section donation-section" id="donate">
         <div class="container">
-            <h2 class="section-title animate">SUPPORT US</h2>
+            <h2 class="section-title animate">SUPPORT OUR YOUTH</h2>
             <div class="donation-container">
                 <div class="donation-form">
                     <h3 class="form-title">Make A Donation</h3>
@@ -1700,24 +1823,24 @@
                 </div>
                 
                 <div class="donation-info">
-                    <h3>We Always Receive All Your Help</h3>
-                    <p>Your support enables us to continue our vital work in Uganda. Whether it's providing school supplies, medical care, or supporting our youth empowerment programs, every contribution makes a difference.</p>
+                    <h3>Transform A Youth's Life Today</h3>
+                    <p>Your support enables us to rescue more street children, rehabilitate youth from addiction, and provide vocational training for sustainable livelihoods. Every donation creates a ripple effect of positive change.</p>
                     
                     <div style="margin: 2rem 0;">
                         <a href="#donate" class="cta-button" style="display: inline-block; margin-right: 1rem;">DONATE NOW</a>
-                        <a href="#contact" class="cta-button" style="display: inline-block; background-color: #1a5276; color: white;">CONTACT US</a>
+                        <a href="about.html" class="cta-button" style="display: inline-block; background-color: #1a5276; color: white;">KNOW MORE</a>
                     </div>
                     
                     <div class="testimonial" style="margin: 2rem 0; padding: 1.5rem;">
-                        <p style="font-size: 1rem;">"This organization is a lifeline for so many in need. Their commitment to feeding the hungry is unparalleled; they ensure that no one in our community goes to bed hungry."</p>
-                        <div class="testimonial-author">★★★★★ Nakilanda Hilda (February 2025)</div>
+                        <p style="font-size: 1rem;">"My son was addicted to drugs for 5 years. RUFA didn't just help him - they helped our whole family heal. Today he's drug-free, employed, and helping other youth."</p>
+                        <div class="testimonial-author">★★★★★ Sarah M., Parent (March 2025)</div>
                     </div>
                     
                     <div class="contact-box">
                         <h4>WE'RE READY 24 HOURS</h4>
-                        <p><i class="fas fa-phone-alt" style="color: #1a5276; margin-right: 0.5rem;"></i> Call Us If You Want To Donate</p>
+                        <p><i class="fas fa-phone-alt" style="color: #1a5276; margin-right: 0.5rem;"></i> Call Us If You Want To Donate or Report a Child in Need</p>
                         <div class="phone-number">+256 772 342831</div>
-                        <p><strong>2025 Impact Goal:</strong> Reach 50,000 children with education and healthcare services</p>
+                        <p><strong>2025 Impact Goal:</strong> Rescue 300 more street children and rehabilitate 200 youth from addiction</p>
                     </div>
                 </div>
             </div>
@@ -1768,14 +1891,14 @@
                         </div>
                         <div class="contact-text">
                             <h4>Current Year Focus</h4>
-                            <p><strong>2025 Initiative:</strong> Digital Education for 5,000 rural children</p>
+                            <p><strong>2025 Initiative:</strong> "Street to Success" - Vocational training for 500 youth</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="donation-form">
                     <h3 class="form-title">Subscribe to Our 2025 Newsletter</h3>
-                    <p style="margin-bottom: 1.5rem; color: #555;">Stay updated with our latest activities and impact stories for 2025.</p>
+                    <p style="margin-bottom: 1.5rem; color: #555;">Stay updated with our latest rescue stories, rehabilitation successes, and impact reports for 2025.</p>
                     
                     <div class="form-group">
                         <label for="newsletter-email">Email Address</label>
@@ -1788,7 +1911,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - UPDATED -->
     <footer>
         <div class="container">
             <div class="footer-container">
@@ -1799,8 +1922,8 @@
                             <div class="logo" style="font-size: 1.5rem;">RUFA GLOBAL ORGANIZATION</div>
                         </div>
                     </div>
-                    <p>We provide strong leadership to effectively empower youth especially young girls and women in different rural areas in Uganda.</p>
-                    <p>Let's Make Change Together.</p>
+                    <p>Transforming vulnerable youth through rescue, rehabilitation, education, and empowerment programs across Uganda.</p>
+                    <p>Building Brighter Futures, One Youth at a Time.</p>
                 </div>
                 
                 <div class="footer-column">
@@ -1814,12 +1937,12 @@
                 
                 <div class="footer-column">
                     <h4>Our 2025 Programs</h4>
-                    <a href="#programs">Education Services</a>
-                    <a href="#programs">Health Services</a>
-                    <a href="#programs">Aid Distribution</a>
-                    <a href="#programs">Women Empowerment</a>
-                    <a href="#programs">Girl Child Empowerment</a>
-                    <a href="#programs">Disabled People Support</a>
+                    <a href="#programs">Street Children Rescue</a>
+                    <a href="#programs">Drug Rehabilitation</a>
+                    <a href="#programs">Vocational Training</a>
+                    <a href="#programs">Family Reintegration</a>
+                    <a href="#programs">Youth Counseling</a>
+                    <a href="#programs">Education Support</a>
                 </div>
                 
                 <div class="footer-column">
@@ -1915,12 +2038,12 @@
                     entry.target.classList.add('visible');
                     
                     // Animate child elements with delays
-                    if (entry.target.id === 'featuresGrid') {
-                        const featureItems = entry.target.querySelectorAll('.feature-item');
-                        featureItems.forEach((item, index) => {
+                    if (entry.target.id === 'featuresPyramid') {
+                        const pyramidItems = entry.target.querySelectorAll('.pyramid-item');
+                        pyramidItems.forEach((item, index) => {
                             setTimeout(() => {
                                 item.classList.add('visible');
-                            }, index * 100);
+                            }, index * 150);
                         });
                     }
                     
@@ -1974,7 +2097,7 @@
         });
         
         // Observe feature items, stat items, service cards, etc.
-        document.querySelectorAll('#featuresGrid, #statsContainer, #servicesContainer, #statsBar, #impactStats').forEach(el => {
+        document.querySelectorAll('#featuresPyramid, #statsContainer, #servicesContainer, #statsBar, #impactStats').forEach(el => {
             observer.observe(el);
         });
         
@@ -1987,7 +2110,7 @@
             const amount = document.getElementById('donation-amount').value;
             
             if (name && email && amount) {
-                alert('Thank you for your donation of $' + amount + ' to RUFA GLOBAL ORGANIZATION! We will contact you shortly.');
+                alert('Thank you for your donation of $' + amount + ' to RUFA GLOBAL ORGANIZATION! Your contribution will help rescue and rehabilitate vulnerable youth. We will contact you shortly.');
                 document.querySelector('.donation-form form').reset();
             } else {
                 alert('Please fill in all required fields.');
@@ -2000,7 +2123,7 @@
                 const form = this.closest('.newsletter-form');
                 const emailInput = form.querySelector('input');
                 if (emailInput.value && emailInput.value.includes('@')) {
-                    alert('Thank you for subscribing to RUFA GLOBAL ORGANIZATION 2025 newsletter!');
+                    alert('Thank you for subscribing to RUFA GLOBAL ORGANIZATION 2025 newsletter! You\'ll receive updates on our youth empowerment programs.');
                     emailInput.value = '';
                 } else {
                     alert('Please enter a valid email address.');
@@ -2037,7 +2160,7 @@
                 stat.textContent = '0';
                 
                 let count = 0;
-                const increment = finalValue.includes('+') || finalValue.includes('K') 
+                const increment = finalValue.includes('+') || finalValue.includes('%') 
                     ? Math.ceil(parseInt(finalValue.replace(/[^0-9]/g, '')) / 100) 
                     : 1;
                 
@@ -2047,7 +2170,7 @@
                         stat.textContent = finalValue;
                         clearInterval(timer);
                     } else {
-                        stat.textContent = count + (finalValue.includes('K') ? 'K' : '') + (finalValue.includes('+') ? '+' : '');
+                        stat.textContent = count + (finalValue.includes('%') ? '%' : '') + (finalValue.includes('+') ? '+' : '');
                     }
                 }, 30);
             });
