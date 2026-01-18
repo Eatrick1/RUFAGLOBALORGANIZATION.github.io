@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Programs - RUFA GLOBAL ORGANIZATION</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: #1a5276;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ffcc00, #ffd633);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #1a5276;
+            animation: pulse 2s infinite alternate;
+            box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3); }
+            100% { transform: scale(1.05); box-shadow: 0 6px 18px rgba(255, 204, 0, 0.5); }
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .logo span {
+            color: #ffcc00;
+        }
+        
+        .org-tagline {
+            font-size: 0.9rem;
+            color: #ffcc00;
+            font-style: italic;
+            margin-top: 0.2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ffcc00;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(26, 82, 118, 0.9), rgba(26, 82, 118, 0.95)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 204, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 20%, rgba(26, 82, 118, 0.1) 0%, transparent 50%);
+            animation: float 20s infinite ease-in-out alternate;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-20px, 20px) scale(1.05); }
+            100% { transform: translate(10px, -10px) scale(1); }
+        }
+        
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page-subtitle {
+            font-size: 1.8rem;
+            color: #ffcc00;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+        
+        .page-description {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+        
+        /* Section Styling */
+        .section {
+            padding: 5rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a5276;
+            margin-bottom: 3rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .section-title.animate {
+            animation-delay: 0.3s;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background-color: #ffcc00;
+            margin: 0.5rem auto 2rem;
+            transform: scaleX(0);
+            transform-origin: center;
+            animation: expand 0.8s ease-out 0.5s forwards;
+        }
+
+        @keyframes expand {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+        
+        /* Program Cards */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .program-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .program-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .program-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .program-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .program-card:hover .program-image img {
+            transform: scale(1.1);
+        }
+        
+        .program-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #1a5276;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .program-content {
+            padding: 2rem;
+        }
+        
+        .program-content h3 {
+            color: #1a5276;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+            min-height: 60px;
+        }
+        
+        .program-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+        
+        .program-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: #f0f7ff;
+            border-radius: 8px;
+        }
+        
+        .program-stat {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffcc00;
+            margin-bottom: 0.3rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #1a5276;
+            font-weight: 600;
+        }
+        
+        /* Program Details */
+        .program-details {
+            background-color: #f0f7ff;
+        }
+        
+        .details-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .details-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .tab-button {
+            background-color: white;
+            color: #1a5276;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .tab-button:hover {
+            background-color: #ffcc00;
+            transform: translateY(-3px);
+        }
+        
+        .tab-button.active {
+            background-color: #1a5276;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            background-color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .tab-content h3 {
+            color: #1a5276;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        
+        .tab-content h4 {
+            color: #1a5276;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .tab-content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tab-content li {
+            margin-bottom: 0.8rem;
+            color: #555;
+        }
+        
+        /* Impact Section */
+        .impact-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .impact-item {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .impact-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .impact-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .impact-icon {
+            font-size: 3rem;
+            color: #1a5276;
+            margin-bottom: 1rem;
+        }
+        
+        .impact-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffcc00;
+            margin-bottom: 0.5rem;
+        }
+        
+        .impact-text {
+            color: #1a5276;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background-color: #ffcc00;
+            color: #1a5276;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            background-color: #ffd633;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        .cta-button i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Get Involved Section */
+        .involved-section {
+            background-color: #1a5276;
+            color: white;
+        }
+        
+        .involved-section .section-title {
+            color: white;
+        }
+        
+        .involved-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .involved-card {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .involved-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .involved-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .involved-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #1a5276;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .involved-card:hover .involved-icon {
+            transform: scale(1.1);
+            background-color: #ffcc00;
+        }
+        
+        .involved-card h3 {
+            color: #1a5276;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .involved-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0d3c5c;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h4 {
+            color: #ffcc00;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-column p {
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: #ffcc00;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .page-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .programs-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 1rem;
+            }
+            
+            .page-header {
+                padding: 4rem 1rem;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .tab-content {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .program-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo-container">
+                    <div class="logo-img">RGO</div>
+                    <div class="logo-text">
+                        <div class="logo">RUFA GLOBAL ORGANIZATION</div>
+                        <div class="org-tagline">TO RAISE THE FUTURE GENERATION</div>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html" class="active">Programs</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Our Programs</h1>
+            <div class="page-subtitle">Transforming Lives Across Uganda</div>
+            <p class="page-description">
+                We implement comprehensive programs in education, healthcare, women empowerment, and humanitarian aid to create sustainable change in Uganda's most vulnerable communities.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Programs Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title animate">Our Core Programs</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: #555; font-size: 1.2rem;">
+                Each program is designed to address specific needs while working together to create holistic community transformation
+            </p>
+            
+            <div class="programs-grid" id="programsGrid">
+                <!-- Education Program Card -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Education Program">
+                        <div class="program-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                    </div>
+                    <div class="program-content">
+                        <h3>Education & School Support Program</h3>
+                        <p>Providing access to quality education through school supplies, scholarships, infrastructure development, and teacher training programs across rural Uganda.</p>
+                        
+                        <div class="program-stats">
+                            <div class="program-stat">
+                                <div class="stat-number">15,000+</div>
+                                <div class="stat-label">Students Reached</div>
+                            </div>
+                            <div class="program-stat">
+                                <div class="stat-number">45</div>
+                                <div class="stat-label">Schools Supported</div>
+                            </div>
+                        </div>
+                        
+                        <button class="cta-button" onclick="openTab('education')">LEARN MORE</button>
+                    </div>
+                </div>
+                
+                <!-- Healthcare Program Card -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80" alt="Healthcare Program">
+                        <div class="program-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                    </div>
+                    <div class="program-content">
+                        <h3>Healthcare & Medical Support Program</h3>
+                        <p>Delivering essential healthcare services, medical supplies, health education, and maternal care to underserved communities across Uganda.</p>
+                        
+                        <div class="program-stats">
+                            <div class="program-stat">
+                                <div class="stat-number">8,500+</div>
+                                <div class="stat-label">Patients Served</div>
+                            </div>
+                            <div class="program-stat">
+                                <div class="stat-number">450K+</div>
+                                <div class="stat-label">Hygiene Kits</div>
+                            </div>
+                        </div>
+                        
+                        <button class="cta-button" onclick="openTab('healthcare')">LEARN MORE</button>
+                    </div>
+                </div>
+                
+                <!-- Women Empowerment Card -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1593113630400-ea4288922493?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Women Empowerment">
+                        <div class="program-icon">
+                            <i class="fas fa-female"></i>
+                        </div>
+                    </div>
+                    <div class="program-content">
+                        <h3>Women & Girl Child Empowerment</h3>
+                        <p>Empowering women and girls through skills training, economic opportunities, menstrual health education, and leadership development programs.</p>
+                        
+                        <div class="program-stats">
+                            <div class="program-stat">
+                                <div class="stat-number">3,200+</div>
+                                <div class="stat-label">Women Trained</div>
+                            </div>
+                            <div class="program-stat">
+                                <div class="stat-number">12K+</div>
+                                <div class="stat-label">Girls Supported</div>
+                            </div>
+                        </div>
+                        
+                        <button class="cta-button" onclick="openTab('women')">LEARN MORE</button>
+                    </div>
+                </div>
+                
+                <!-- Humanitarian Aid Card -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1981&q=80" alt="Humanitarian Aid">
+                        <div class="program-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                    </div>
+                    <div class="program-content">
+                        <h3>Humanitarian Aid & Relief Program</h3>
+                        <p>Providing emergency food, clean water, shelter, and essential supplies to families affected by poverty, conflict, and natural disasters.</p>
+                        
+                        <div class="program-stats">
+                            <div class="program-stat">
+                                <div class="stat-number">95+</div>
+                                <div class="stat-label">Households</div>
+                            </div>
+                            <div class="program-stat">
+                                <div class="stat-number">2,300+</div>
+                                <div class="stat-label">Children Fed</div>
+                            </div>
+                        </div>
+                        
+                        <button class="cta-button" onclick="openTab('aid')">LEARN MORE</button>
+                    </div>
+                </div>
+                
+                <!-- Disability Support Card -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Disability Support">
+                        <div class="program-icon">
+                            <i class="fas fa-wheelchair"></i>
+                        </div>
+                    </div>
+                    <div class="program-content">
+                        <h3>Disability Inclusion & Support</h3>
+                        <p>Ensuring access to education, healthcare, and economic opportunities for differently-abled children and adults across Uganda.</p>
+                        
+                        <div class="program-stats">
+                            <div class="program-stat">
+                                <div class="stat-number">850+</div>
+                                <div class="stat-label">Individuals</div>
+                            </div>
+                            <div class="program-stat">
+                                <div class="stat-number">15</div>
+                                <div class="stat-label">Care Centers</div>
+                            </div>
+                        </div>
+                        
+                        <button class="cta-button" onclick="openTab('disability')">LEARN MORE</button>
+                    </div>
+                </div>
+                
+                <!-- Youth Development Card -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Youth Development">
+                        <div class="program-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                    </div>
+                    <div class="program-content">
+                        <h3>Youth Development & Leadership</h3>
+                        <p>Developing future leaders through mentorship, skills training, entrepreneurship programs, and civic engagement initiatives for Ugandan youth.</p>
+                        
+                        <div class="program-stats">
+                            <div class="program-stat">
+                                <div class="stat-number">2,500+</div>
+                                <div class="stat-label">Youth Trained</div>
+                            </div>
+                            <div class="program-stat">
+                                <div class="stat-number">75</div>
+                                <div class="stat-label">Youth Leaders</div>
+                            </div>
+                        </div>
+                        
+                        <button class="cta-button" onclick="openTab('youth')">LEARN MORE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Details Section -->
+    <section class="section program-details">
+        <div class="container">
+            <h2 class="section-title animate">Program Details</h2>
+            
+            <div class="details-container">
+                <div class="details-tabs">
+                    <button class="tab-button active" onclick="openTab('education')">Education</button>
+                    <button class="tab-button" onclick="openTab('healthcare')">Healthcare</button>
+                    <button class="tab-button" onclick="openTab('women')">Women Empowerment</button>
+                    <button class="tab-button" onclick="openTab('aid')">Humanitarian Aid</button>
+                    <button class="tab-button" onclick="openTab('disability')">Disability Support</button>
+                    <button class="tab-button" onclick="openTab('youth')">Youth Development</button>
+                </div>
+                
+                <!-- Education Tab -->
+                <div id="education" class="tab-content active">
+                    <h3>Education & School Support Program</h3>
+                    <p>Our Education Program aims to break the cycle of poverty by providing access to quality education for children in Uganda's most underserved communities. We believe education is the foundation for sustainable development and social transformation.</p>
+                    
+                    <h4>Key Components:</h4>
+                    <ul>
+                        <li><strong>Scholastic Materials Distribution:</strong> Providing textbooks, notebooks, pens, uniforms, and school bags to students in need</li>
+                        <li><strong>School Infrastructure Development:</strong> Building and renovating classrooms, libraries, and sanitation facilities</li>
+                        <li><strong>Teacher Training & Support:</strong> Professional development programs for educators in rural schools</li>
+                        <li><strong>Digital Literacy Programs:</strong> Introducing computer labs and digital skills training in partnership with tech companies</li>
+                        <li><strong>Scholarship Programs:</strong> Full and partial scholarships for bright but disadvantaged students</li>
+                        <li><strong>Early Childhood Education:</strong> Establishing preschools and early learning centers in remote areas</li>
+                    </ul>
+                    
+                    <h4>2025 Impact Goals:</h4>
+                    <ul>
+                        <li>Support 5,000 additional students with scholastic materials</li>
+                        <li>Establish 10 new digital learning centers</li>
+                        <li>Provide 200 full scholarships for secondary and university education</li>
+                        <li>Train 150 teachers in modern pedagogical approaches</li>
+                    </ul>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="index.html#donate" class="cta-button">SUPPORT EDUCATION</a>
+                    </div>
+                </div>
+                
+                <!-- Healthcare Tab -->
+                <div id="healthcare" class="tab-content">
+                    <h3>Healthcare & Medical Support Program</h3>
+                    <p>Our Healthcare Program addresses critical health needs in communities with limited access to medical services. We focus on preventive care, maternal health, disease prevention, and emergency medical support.</p>
+                    
+                    <h4>Key Components:</h4>
+                    <ul>
+                        <li><strong>Medical Outreach Camps:</strong> Regular mobile clinics providing free consultations, treatments, and medications</li>
+                        <li><strong>Menstrual Health Initiative:</strong> Distribution of reusable sanitary pads and menstrual health education for girls and women</li>
+                        <li><strong>Maternal & Child Health:</strong> Prenatal care, safe delivery support, and postnatal care for mothers and infants</li>
+                        <li><strong>HIV/AIDS Prevention & Support:</strong> Education, testing, and support for affected individuals and families</li>
+                        <li><strong>Nutrition Programs:</strong> Addressing malnutrition through supplemental feeding and nutrition education</li>
+                        <li><strong>Water, Sanitation & Hygiene (WASH):</strong> Providing clean water sources and promoting hygiene practices</li>
+                    </ul>
+                    
+                    <h4>2025 Impact Goals:</h4>
+                    <ul>
+                        <li>Distribute 100,000 additional menstrual hygiene kits</li>
+                        <li>Conduct 50 medical outreach camps reaching 10,000 patients</li>
+                        <li>Provide prenatal care to 1,500 expecting mothers</li>
+                        <li>Establish 20 new clean water sources in drought-affected areas</li>
+                    </ul>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="index.html#donate" class="cta-button">SUPPORT HEALTHCARE</a>
+                    </div>
+                </div>
+                
+                <!-- Women Empowerment Tab -->
+                <div id="women" class="tab-content">
+                    <h3>Women & Girl Child Empowerment Program</h3>
+                    <p>Our Women Empowerment Program addresses gender inequality by providing women and girls with the tools, skills, and opportunities to become leaders and change-makers in their communities.</p>
+                    
+                    <h4>Key Components:</h4>
+                    <ul>
+                        <li><strong>Vocational Skills Training:</strong> Tailoring, hairdressing, catering, handicrafts, and other marketable skills</li>
+                        <li><strong>Economic Empowerment:</strong> Microfinance loans, savings groups, and business development training</li>
+                        <li><strong>Leadership Development:</strong> Training women for community leadership roles and political participation</li>
+                        <li><strong>Gender-Based Violence Prevention:</strong> Education, counseling, and support services for survivors</li>
+                        <li><strong>Girl Child Education:</strong> Scholarships, mentoring, and support to keep girls in school</li>
+                        <li><strong>Reproductive Health Education:</strong> Comprehensive sexual health education and family planning services</li>
+                    </ul>
+                    
+                    <h4>2025 Impact Goals:</h4>
+                    <ul>
+                        <li>Train 1,000 women in vocational skills and entrepreneurship</li>
+                        <li>Establish 50 women-led small businesses through microfinance support</li>
+                        <li>Provide leadership training to 500 women for community roles</li>
+                        <li>Support 2,000 girls with scholarships and mentoring programs</li>
+                    </ul>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="index.html#donate" class="cta-button">EMPOWER WOMEN</a>
+                    </div>
+                </div>
+                
+                <!-- Humanitarian Aid Tab -->
+                <div id="aid" class="tab-content">
+                    <h3>Humanitarian Aid & Relief Program</h3>
+                    <p>Our Humanitarian Aid Program provides emergency relief and long-term support to communities affected by poverty, conflict, climate change, and natural disasters across Uganda.</p>
+                    
+                    <h4>Key Components:</h4>
+                    <ul>
+                        <li><strong>Emergency Food Distribution:</strong> Providing nutritious food packages to families facing hunger</li>
+                        <li><strong>Shelter Support:</strong> Building and repairing homes for displaced families and disaster victims</li>
+                        <li><strong>Non-Food Item Distribution:</strong> Essential household items, clothing, and hygiene kits</li>
+                        <li><strong>Disaster Response:</strong> Rapid deployment of aid following floods, landslides, or other emergencies</li>
+                        <li><strong>Refugee Support:</strong> Assisting refugee communities with basic needs and integration support</li>
+                        <li><strong>Climate Resilience:</strong> Supporting communities to adapt to climate change through sustainable practices</li>
+                    </ul>
+                    
+                    <h4>2025 Impact Goals:</h4>
+                    <ul>
+                        <li>Provide emergency food assistance to 3,000 families</li>
+                        <li>Distribute 5,000 essential household kits to displaced families</li>
+                        <li>Build 100 sustainable homes for disaster-affected families</li>
+                        <li>Establish 10 community gardens for food security</li>
+                    </ul>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="index.html#donate" class="cta-button">SUPPORT AID WORK</a>
+                    </div>
+                </div>
+                
+                <!-- Disability Support Tab -->
+                <div id="disability" class="tab-content">
+                    <h3>Disability Inclusion & Support Program</h3>
+                    <p>Our Disability Program promotes inclusion and equal opportunities for differently-abled individuals, ensuring they have access to education, healthcare, and economic opportunities.</p>
+                    
+                    <h4>Key Components:</h4>
+                    <ul>
+                        <li><strong>Inclusive Education:</strong> Supporting schools to accommodate children with disabilities</li>
+                        <li><strong>Assistive Devices:</strong> Providing wheelchairs, hearing aids, prosthetics, and other mobility aids</li>
+                        <li><strong>Vocational Training:</strong> Skills development programs tailored for individuals with disabilities</li>
+                        <li><strong>Healthcare Access:</strong> Specialized medical care and therapy services</li>
+                        <li><strong>Community Awareness:</strong> Reducing stigma and promoting inclusion through education</li>
+                        <li><strong>Caregiver Support:</strong> Training and resources for families caring for disabled members</li>
+                    </ul>
+                    
+                    <h4>2025 Impact Goals:</h4>
+                    <ul>
+                        <li>Provide assistive devices to 500 individuals with disabilities</li>
+                        <li>Support 30 schools to become more disability-inclusive</li>
+                        <li>Train 200 individuals with disabilities in vocational skills</li>
+                        <li>Conduct 50 community awareness campaigns on disability inclusion</li>
+                    </ul>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="index.html#donate" class="cta-button">SUPPORT INCLUSION</a>
+                    </div>
+                </div>
+                
+                <!-- Youth Development Tab -->
+                <div id="youth" class="tab-content">
+                    <h3>Youth Development & Leadership Program</h3>
+                    <p>Our Youth Program empowers the next generation of Ugandan leaders through education, skills development, and opportunities for meaningful participation in community development.</p>
+                    
+                    <h4>Key Components:</h4>
+                    <ul>
+                        <li><strong>Leadership Training:</strong> Developing young leaders through workshops, mentoring, and practical experience</li>
+                        <li><strong>Entrepreneurship Programs:</strong> Business training, startup support, and access to capital for youth-led enterprises</li>
+                        <li><strong>Civic Engagement:</strong> Encouraging youth participation in community decision-making and volunteerism</li>
+                        <li><strong>Life Skills Education:</strong> Communication, problem-solving, financial literacy, and digital skills</li>
+                        <li><strong>Creative Arts & Sports:</strong> Using arts and sports as tools for personal development and social change</li>
+                        <li><strong>Career Guidance:</strong> Counseling, internships, and job placement support</li>
+                    </ul>
+                    
+                    <h4>2025 Impact Goals:</h4>
+                    <ul>
+                        <li>Train 1,500 youth in leadership and entrepreneurship skills</li>
+                        <li>Support 100 youth-led startup businesses</li>
+                        <li>Engage 2,000 youth in community service projects</li>
+                        <li>Provide career guidance to 3,000 secondary and university students</li>
+                    </ul>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="index.html#donate" class="cta-button">INVEST IN YOUTH</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Highlights Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title animate">Program Impact (2021-2025)</h2>
+            
+            <div class="impact-highlights" id="impactHighlights">
+                <div class="impact-item">
+                    <div class="impact-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="impact-number">32K+</div>
+                    <div class="impact-text">Children Impacted</div>
+                </div>
+                
+                <div class="impact-item">
+                    <div class="impact-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="impact-number">450K+</div>
+                    <div class="impact-text">Hygiene Kits Distributed</div>
+                </div>
+                
+                <div class="impact-item">
+                    <div class="impact-icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <div class="impact-number">3.2K+</div>
+                    <div class="impact-text">Women Empowered</div>
+                </div>
+                
+                <div class="impact-item">
+                    <div class="impact-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="impact-number">95+</div>
+                    <div class="impact-text">Communities Served</div>
+                </div>
+                
+                <div class="impact-item">
+                    <div class="impact-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="impact-number">45</div>
+                    <div class="impact-text">Schools Supported</div>
+                </div>
+                
+                <div class="impact-item">
+                    <div class="impact-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="impact-number">2.3K</div>
+                    <div class="impact-text">Children Fed (2025)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Involved Section -->
+    <section class="section involved-section">
+        <div class="container">
+            <h2 class="section-title animate">Get Involved With Our Programs</h2>
+            
+            <div class="involved-container" id="involvedContainer">
+                <div class="involved-card">
+                    <div class="involved-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>Donate</h3>
+                    <p>Your financial support enables us to expand our programs and reach more communities in need across Uganda.</p>
+                    <a href="index.html#donate" class="cta-button">DONATE NOW</a>
+                </div>
+                
+                <div class="involved-card">
+                    <div class="involved-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Volunteer</h3>
+                    <p>Join our team of dedicated volunteers and contribute your skills to make a difference in Ugandan communities.</p>
+                    <a href="index.html#contact" class="cta-button" style="background-color: #1a5276; color: white;">VOLUNTEER</a>
+                </div>
+                
+                <div class="involved-card">
+                    <div class="involved-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Partner</h3>
+                    <p>Organizations and businesses can partner with us to create sustainable impact through our programs.</p>
+                    <a href="index.html#contact" class="cta-button" style="background-color: #1a5276; color: white;">PARTNER WITH US</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <div class="logo-container" style="margin-bottom: 1rem;">
+                        <div class="logo-img" style="width: 50px; height: 50px; font-size: 1.5rem;">RGO</div>
+                        <div class="logo-text">
+                            <div class="logo" style="font-size: 1.5rem;">RUFA GLOBAL</div>
+                            <div class="org-tagline" style="font-size: 0.8rem;">TO RAISE THE FUTURE GENERATION</div>
+                        </div>
+                    </div>
+                    <p>We implement comprehensive programs in education, healthcare, women empowerment, and humanitarian aid to create sustainable change in Uganda's most vulnerable communities.</p>
+                    <p>Let's Make Change Together.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Our Programs</h4>
+                    <a href="programs.html#education">Education Support</a>
+                    <a href="programs.html#healthcare">Healthcare Services</a>
+                    <a href="programs.html#women">Women Empowerment</a>
+                    <a href="programs.html#aid">Humanitarian Aid</a>
+                    <a href="programs.html#disability">Disability Support</a>
+                    <a href="programs.html#youth">Youth Development</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="programs.html">Programs</a>
+                    <a href="index.html#contact">Contact</a>
+                    <a href="index.html#donate">Donate Now</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Kalema Road, Kampala, Uganda</p>
+                    <p><i class="fas fa-phone"></i> +256 772 342831</p>
+                    <p><i class="fas fa-envelope"></i> info@rufaglobal.org</p>
+                    <p><i class="fas fa-calendar"></i> Founded: 2018 | Active: 2025</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2018-<span id="currentYear"></span> RUFA GLOBAL ORGANIZATION. All rights reserved. | To Raise The Future Generation</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Display current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Tab functionality
+        function openTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show the selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Activate the clicked button
+            event.currentTarget.classList.add('active');
+            
+            // Scroll to the tab section
+            document.querySelector('.program-details').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate child elements with delays
+                    if (entry.target.id === 'programsGrid') {
+                        const programCards = entry.target.querySelectorAll('.program-card');
+                        programCards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, index * 150);
+                        });
+                    }
+                    
+                    if (entry.target.id === 'impactHighlights') {
+                        const impactItems = entry.target.querySelectorAll('.impact-item');
+                        impactItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('visible');
+                            }, index * 100);
+                        });
+                    }
+                    
+                    if (entry.target.id === 'involvedContainer') {
+                        const involvedCards = entry.target.querySelectorAll('.involved-card');
+                        involvedCards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, index * 200);
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Observe sections for animation
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Observe containers
+        document.querySelectorAll('#programsGrid, #impactHighlights, #involvedContainer').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Animate stats on scroll
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            statNumbers.forEach(stat => {
+                const finalValue = stat.textContent;
+                const isK = finalValue.includes('K');
+                const isPlus = finalValue.includes('+');
+                const numValue = parseInt(finalValue.replace(/[^0-9]/g, ''));
+                
+                stat.textContent = '0';
+                
+                let count = 0;
+                const increment = Math.max(1, Math.floor(numValue / 100));
+                
+                const timer = setInterval(() => {
+                    count += increment;
+                    if (count >= numValue) {
+                        stat.textContent = finalValue;
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = count + (isK ? 'K' : '') + (isPlus ? '+' : '');
+                    }
+                }, 30);
+            });
+        }
+        
+        // Trigger animation when stats are in view
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        const statsSection = document.querySelector('.programs-grid');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a, .footer-column a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href').includes('#')) {
+                    e.preventDefault();
+                    
+                    const href = this.getAttribute('href');
+                    if (href.includes('index.html')) {
+                        // Redirect to index.html with hash
+                        window.location.href = href;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

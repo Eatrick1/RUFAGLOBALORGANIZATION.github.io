@@ -1,0 +1,2392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - RUFA GLOBAL ORGANIZATION</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Floating Background Elements */
+        .floating-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255, 204, 0, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s infinite linear;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 5%;
+            animation-duration: 30s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 10%;
+            animation-duration: 25s;
+            animation-direction: reverse;
+            background: radial-gradient(circle, rgba(26, 82, 118, 0.1) 0%, transparent 70%);
+        }
+
+        .floating-element:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 15%;
+            animation-duration: 20s;
+            background: radial-gradient(circle, rgba(255, 204, 0, 0.08) 0%, transparent 70%);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(20px, 30px) rotate(90deg);
+            }
+            50% {
+                transform: translate(-15px, 20px) rotate(180deg);
+            }
+            75% {
+                transform: translate(10px, -15px) rotate(270deg);
+            }
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: #1a5276;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1002;
+        }
+        
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ffcc00, #ffd633);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #1a5276;
+            animation: pulse 2s infinite alternate;
+            box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3);
+            overflow: hidden;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3); }
+            100% { transform: scale(1.05); box-shadow: 0 6px 18px rgba(255, 204, 0, 0.5); }
+        }
+        
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: white;
+        }
+        
+        .tagline {
+            font-size: 0.8rem;
+            color: #ffcc00;
+            font-style: italic;
+            margin-top: 0.1rem;
+        }
+        
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1002;
+        }
+        
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: flex;
+        }
+        
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        
+        .desktop-nav ul li {
+            position: relative;
+        }
+        
+        .desktop-nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            padding: 5px 0;
+        }
+        
+        .desktop-nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        .desktop-nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ffcc00;
+            transition: width 0.3s ease;
+        }
+
+        .desktop-nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Mobile Sidebar Navigation */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .mobile-nav-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        .mobile-nav-sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100%;
+            background-color: #1a5276;
+            z-index: 1002;
+            transition: left 0.3s ease;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mobile-nav-sidebar.active {
+            left: 0;
+        }
+        
+        .mobile-nav-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background-color: #0d3c5c;
+        }
+        
+        .mobile-logo-img {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #ffcc00, #ffd633);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1a5276;
+            overflow: hidden;
+        }
+        
+        .mobile-logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .mobile-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mobile-logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .mobile-tagline {
+            font-size: 0.7rem;
+            color: #ffcc00;
+            font-style: italic;
+            margin-top: 0.1rem;
+        }
+        
+        .mobile-nav-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .mobile-nav-menu {
+            flex: 1;
+            padding: 2rem 0;
+            overflow-y: auto;
+        }
+        
+        .mobile-nav-menu ul {
+            list-style: none;
+        }
+        
+        .mobile-nav-menu ul li {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-nav-menu ul li a {
+            display: block;
+            padding: 1.2rem 1.5rem;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+        
+        .mobile-nav-menu ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffcc00;
+            border-left-color: #ffcc00;
+            padding-left: 2rem;
+        }
+        
+        /* Current Date Banner */
+        .current-date {
+            background-color: #ffcc00;
+            color: #1a5276;
+            text-align: center;
+            padding: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            animation: slideInTop 0.8s ease-out;
+        }
+
+        @keyframes slideInTop {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(26, 82, 118, 0.85), rgba(26, 82, 118, 0.9)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 204, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 20%, rgba(26, 82, 118, 0.1) 0%, transparent 50%);
+            animation: float 20s infinite ease-in-out alternate;
+        }
+        
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page-subtitle {
+            font-size: 1.8rem;
+            color: #ffcc00;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+        
+        /* Video Documentary Section */
+        .documentary-section {
+            padding: 6rem 0;
+            background-color: #0d3c5c;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .documentary-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"><path d="M0,100 Q250,50 500,100 T1000,100 L1000,0 L0,0 Z" fill="%23ffcc00" opacity="0.05"/></svg>');
+            background-size: cover;
+        }
+
+        .video-container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(26, 82, 118, 0.2), rgba(26, 82, 118, 0.4));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background-color: #ffcc00;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #1a5276;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            background-color: #ffd633;
+        }
+
+        .video-caption {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Monthly Achievements Section */
+        .achievements-section {
+            background-color: #f0f7ff;
+            padding: 6rem 0;
+        }
+
+        .achievements-timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem 0;
+        }
+
+        .achievements-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #1a5276, #ffcc00);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .achievement-month {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 4rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s;
+        }
+
+        .achievement-month.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .achievement-month:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .month-content {
+            width: 45%;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .achievement-month:nth-child(even) .month-content {
+            margin-left: 5%;
+        }
+
+        .achievement-month:nth-child(odd) .month-content {
+            margin-right: 5%;
+        }
+
+        .month-badge {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ffcc00, #ffd633);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #1a5276;
+            font-weight: bold;
+            font-size: 1.2rem;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .month-name {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .year {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .achievement-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .achievement-stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .achievement-stat:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #ffcc00, #ffd633);
+        }
+
+        .achievement-stat:hover .stat-number {
+            color: #1a5276;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffcc00;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .stat-label {
+            color: #1a5276;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .achievement-highlight {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #1a5276, #0d3c5c);
+            border-radius: 10px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 204, 0, 0.1), transparent);
+        }
+
+        .highlight-title {
+            color: #ffcc00;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Sponsorship Programs - UPDATED WITH IMAGES */
+        .sponsorship-section {
+            background-color: white;
+            padding: 6rem 0;
+        }
+
+        .sponsorship-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .sponsorship-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .sponsorship-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .sponsorship-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Sponsorship Card Images */
+        .sponsorship-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .sponsorship-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .sponsorship-card:hover .sponsorship-image img {
+            transform: scale(1.05);
+        }
+
+        .sponsorship-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(26, 82, 118, 0.2), rgba(26, 82, 118, 0.7));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sponsorship-title-overlay {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            padding: 1rem;
+        }
+
+        .sponsorship-content {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .sponsorship-cost {
+            font-size: 2rem;
+            color: #ffcc00;
+            font-weight: bold;
+            margin: 1.5rem 0;
+        }
+
+        .sponsorship-cost span {
+            font-size: 1rem;
+            color: #666;
+            font-weight: normal;
+        }
+
+        /* Image-based Benefits Section */
+        .sponsorship-benefits {
+            margin: 2rem 0;
+        }
+
+        .benefit-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .benefit-caption {
+            color: #555;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 5rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a5276;
+            margin-bottom: 3rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .section-title.animate {
+            animation-delay: 0.3s;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background-color: #ffcc00;
+            margin: 0.5rem auto 2rem;
+            transform: scaleX(0);
+            transform-origin: center;
+            animation: expand 0.8s ease-out 0.5s forwards;
+        }
+
+        .section-title.white {
+            color: white;
+        }
+
+        .section-title.white::after {
+            background-color: #ffcc00;
+        }
+
+        @keyframes expand {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        /* Disabled Children Support */
+        .disabled-section {
+            background: linear-gradient(135deg, #1a5276, #0d3c5c);
+            color: white;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .disabled-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 Q50,50 100,0 L100,100 L0,100 Z" fill="%23ffcc00" opacity="0.05"/></svg>');
+            background-size: cover;
+        }
+
+        .disabled-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .disabled-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            transition: all 0.4s;
+            opacity: 0;
+            transform: translateY(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .disabled-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .disabled-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #ffcc00;
+        }
+
+        .disabled-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 204, 0, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #ffcc00;
+            margin: 0 auto 2rem;
+        }
+
+        .disabled-card h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .disabled-card p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+        }
+
+        /* School Sponsorship Impact */
+        .impact-section {
+            background-color: #f0f7ff;
+            padding: 6rem 0;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .impact-item {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .impact-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .impact-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, white, #f8f9fa);
+        }
+
+        .impact-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ffcc00;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .impact-text {
+            color: #1a5276;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Orphan Support Programs */
+        .orphan-section {
+            background-color: white;
+            padding: 6rem 0;
+        }
+
+        .orphan-programs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .orphan-program {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .orphan-program.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .orphan-program:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .program-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .program-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .orphan-program:hover .program-image img {
+            transform: scale(1.1);
+        }
+
+        .program-content {
+            padding: 2.5rem;
+        }
+
+        .program-content h3 {
+            color: #1a5276;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .program-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .program-features li {
+            padding: 0.8rem 0;
+            color: #555;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .program-features li:last-child {
+            border-bottom: none;
+        }
+
+        .program-features li::before {
+            content: '❤️';
+            position: absolute;
+            left: 0;
+            top: 0.8rem;
+        }
+
+        /* Success Stories Grid */
+        .stories-section {
+            background-color: #f0f7ff;
+            padding: 6rem 0;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .story-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .story-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .story-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .story-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .story-card:hover .story-image img {
+            transform: scale(1.1);
+        }
+
+        .story-content {
+            padding: 2.5rem;
+        }
+
+        .story-content h4 {
+            color: #1a5276;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .story-content p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-type {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: #ffcc00;
+            color: #1a5276;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1a5276, #0d3c5c);
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 204, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 20%, rgba(26, 82, 118, 0.1) 0%, transparent 50%);
+            animation: pulse 4s infinite alternate;
+        }
+        
+        .cta-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+        
+        .cta-text {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #ffcc00;
+            color: #1a5276;
+            padding: 1.2rem 3.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            transition: all 0.4s;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            background-color: #ffd633;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+        
+        .cta-button i {
+            margin-left: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover i {
+            transform: translateX(10px);
+        }
+
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            opacity: 0;
+            transform: translateX(100px);
+            animation: slideInRight 0.5s ease-out 1s forwards;
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #ffcc00;
+            color: #1a5276;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1) rotate(10deg);
+            background-color: #1a5276;
+            color: #ffcc00;
+        }
+
+        .floating-label {
+            position: absolute;
+            right: 70px;
+            background-color: #1a5276;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+
+        .floating-btn:hover .floating-label {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0d3c5c;
+            color: white;
+            padding: 4rem 0 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        footer.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        footer.visible .footer-column {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer.visible .footer-column:nth-child(1) { transition-delay: 0.1s; }
+        footer.visible .footer-column:nth-child(2) { transition-delay: 0.2s; }
+        footer.visible .footer-column:nth-child(3) { transition-delay: 0.3s; }
+        footer.visible .footer-column:nth-child(4) { transition-delay: 0.4s; }
+        
+        .footer-column h4 {
+            color: #ffcc00;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-column p {
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: all 0.3s;
+            position: relative;
+            padding-left: 0;
+        }
+
+        .footer-column a::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: #ffcc00;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: #ffcc00;
+            padding-left: 15px;
+        }
+
+        .footer-column a:hover::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 1rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s, transform 0.5s;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        footer.visible .newsletter-form {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.5s;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            background-color: transparent;
+            color: white;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .newsletter-form button {
+            background-color: #ffcc00;
+            color: #1a5276;
+            border: none;
+            padding: 0 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #ffd633;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        footer.visible .copyright {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.6s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .page-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .achievements-timeline::before {
+                left: 40px;
+            }
+
+            .achievement-month {
+                flex-direction: row !important;
+                justify-content: flex-start;
+                padding-left: 80px;
+            }
+
+            .month-content {
+                width: 100%;
+                margin: 0 !important;
+            }
+
+            .month-badge {
+                left: 40px;
+                transform: translate(-50%, -50%);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .header-top {
+                padding-bottom: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .logo-img {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .page-header {
+                padding: 4rem 1rem;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .logo-container {
+                gap: 10px;
+            }
+
+            .cta-title {
+                font-size: 2.2rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2.5rem;
+                font-size: 1.1rem;
+            }
+
+            .achievement-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .floating-cta {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .month-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-bg">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+
+    <!-- Current Date Banner -->
+    <div class="current-date" id="currentDate">
+        Today is <span id="dateDisplay"></span> - Join us in raising the future generation
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <div class="logo-container">
+                    <div class="logo-img">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="RUFA Global Organization Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='RGO';">
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo">RUFA GLOBAL ORGANIZATION</div>
+                        <div class="tagline">TO RAISE THE FUTURE GENERATION</div>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="index.html#programs">Programs</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Sidebar Navigation -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    
+    <div class="mobile-nav-sidebar" id="mobileNavSidebar">
+        <div class="mobile-nav-header">
+            <div class="mobile-logo-img">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="RUFA Global Organization Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='RGO';">
+            </div>
+            <div class="mobile-logo-text">
+                <div class="mobile-logo">RUFA GLOBAL ORGANIZATION</div>
+                <div class="mobile-tagline">TO RAISE THE FUTURE GENERATION</div>
+            </div>
+            <button class="mobile-nav-close" id="mobileNavClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="index.html#programs">Programs</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#donate">Donate Now</a></li>
+            </ul>
+        </div>
+        
+        <div class="mobile-nav-footer">
+            <p>Together We Can Make A Difference</p>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Monthly Impact Reports</h1>
+            <div class="page-subtitle">Tracking Our Progress Month by Month</div>
+            <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); animation: fadeInUp 1s ease-out 0.9s both;">
+                See how many street children we rescue, orphans we support, disabled children we help, and school sponsorships we provide each month
+            </p>
+        </div>
+    </section>
+
+    <!-- Video Documentary Section -->
+    <section class="documentary-section">
+        <div class="container">
+            <h2 class="section-title white animate">Our Work in Action</h2>
+            <div class="video-container">
+                <video id="mainVideo" poster="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80">
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-children-in-class-3154-large.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-overlay" id="videoOverlay">
+                    <button class="play-button" id="playButton">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+            <p class="video-caption">Watch how we rescue street children and provide them with education, shelter, and hope for a better future.</p>
+        </div>
+    </section>
+
+    <!-- Monthly Achievements Section -->
+    <section class="achievements-section">
+        <div class="container">
+            <h2 class="section-title animate">Monthly Impact Reports</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.2rem; color: #555;">
+                Here's what we accomplished in recent months across all our programs
+            </p>
+            
+            <div class="achievements-timeline">
+                <!-- January 2024 -->
+                <div class="achievement-month">
+                    <div class="month-content">
+                        <h3>January 2024 - New Year Rescue Campaign</h3>
+                        <p>Started the year with intensive street rescue operations and school enrollment programs.</p>
+                        
+                        <div class="achievement-stats">
+                            <div class="achievement-stat">
+                                <div class="stat-number">127</div>
+                                <div class="stat-label">Street Children Rescued</div>
+                            </div>
+                            <div class="achievement-stat">
+                                <div class="stat-number">45</div>
+                                <div class="stat-label">Orphans Supported</div>
+                            </div>
+                            <div class="achievement-stat">
+                                <div class="stat-number">28</div>
+                                <div class="stat-label">Disabled Children Helped</div>
+                            </div>
+                            <div class="achievement-stat">
+                                <div class="stat-number">89</div>
+                                <div class="stat-label">School Sponsorships</div>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-highlight">
+                            <div class="highlight-title">🎯 Major Achievement</div>
+                            <p>Opened new rehabilitation center in Kampala with capacity for 50 children</p>
+                        </div>
+                    </div>
+                    <div class="month-badge">
+                        <div class="month-name">JAN</div>
+                        <div class="year">2024</div>
+                    </div>
+                </div>
+
+                <!-- March 2024 -->
+                <div class="achievement-month">
+                    <div class="month-content">
+                        <h3>March 2024 - Education Focus Month</h3>
+                        <p>Focused on school enrollment and providing educational materials for the new school term.</p>
+                        
+                        <div class="achievement-stats">
+                            <div class="achievement-stat">
+                                <div class="stat-number">98</div>
+                                <div class="stat-label">Street Children Rescued</div>
+                            </div>
+                            <div class="achievement-stat">
+                                <div class="stat-number">32</div>
+                                <div class="stat-label">Orphans Supported</div>
+                            </div>
+                            <div class="achievement-stat">
+                                <div class="stat-number">35</div>
+                                <div class="stat-label">Disabled Children Helped</div>
+                            </div>
+                            <div class="achievement-stat">
+                                <div class="stat-number">156</div>
+                                <div class="stat-label">School Sponsorships</div>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-highlight">
+                            <div class="highlight-title">🏫 School Success</div>
+                            <p>156 children enrolled in schools with full sponsorship packages</p>
+                        </div>
+                    </div>
+                    <div class="month-badge">
+                        <div class="month-name">MAR</div>
+                        <div class="year">2024</div>
+                    </div>
+                </div>
+
+                <!-- June 2024 -->
+                <div class="achievement-month">
+                    <div class="month-content">
+                        <h3>June 2024 - Mid-Year Expansion</h3>
+                        <p>Expanded our disabled children program and launched new vocational training.</p>
+                        
+                        <div class="achievement-stats">
+                            <div class="achievement-stat">
+                                <div class="stat-number">142</div>
+                                <div class="stat-label">Street Children Rescued</div>
+                            </div>
+                            <div class="achievement-stat">
+                                <div class="stat-number">56</div>
+                                <div class="stat-label">Orphans Supported</div>
+                            </div>
+                            <div class="achievement-stat">
+                                <div class="stat-number">47</div>
+                                <div class="stat-label">Disabled Children Helped</div>
+                            </div>
+                            <div class="achievement-stat">
+                                <div class="stat-number">112</div>
+                                <div class="stat-label">School Sponsorships</div>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-highlight">
+                            <div class="highlight-title">♿ Disability Program</div>
+                            <p>Launched specialized therapy center for 47 disabled children</p>
+                        </div>
+                    </div>
+                    <div class="month-badge">
+                        <div class="month-name">JUN</div>
+                        <div class="year">2024</div>
+                    </div>
+                </div>
+
+                <!-- September 2024 -->
+                <div class="achievement-month">
+                    <div class="month-content">
+                        <h3>September 2024 - Back to School Drive</h3>
+                        <p>Major back-to-school campaign providing uniforms, books, and school fees.</p>
+                        
+                        <div class="achievement-stats">
+                            <div class="achievement-stat">
+                                <div class="stat-number">118</div>
+                                <div class="stat-label">Street Children Rescued</div>
+                            </div>
+                            <div class="achievement-stat">
+                                <div class="stat-number">41</div>
+                                <div class="stat-label">Orphans Supported</div>
+                            </div>
+                            <div class="achievement-stat">
+                                <div class="stat-number">39</div>
+                                <div class="stat-label">Disabled Children Helped</div>
+                            </div>
+                            <div class="achievement-stat">
+                                <div class="stat-number">203</div>
+                                <div class="stat-label">School Sponsorships</div>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-highlight">
+                            <div class="highlight-title">📚 Education Milestone</div>
+                            <p>Provided school supplies for 203 children starting new school year</p>
+                        </div>
+                    </div>
+                    <div class="month-badge">
+                        <div class="month-name">SEP</div>
+                        <div class="year">2024</div>
+                    </div>
+                </div>
+
+                <!-- November 2024 -->
+                <div class="achievement-month">
+                    <div class="month-content">
+                        <h3>November 2024 - Year-End Intensive</h3>
+                        <p>Intensified rescue operations before holiday season and family reunification efforts.</p>
+                        
+                        <div class="achievement-stats">
+                            <div class="achievement-stat">
+                                <div class="stat-number">165</div>
+                                <div class="stat-label">Street Children Rescued</div>
+                            </div>
+                            <div class="achievement-stat">
+                                <div class="stat-number">63</div>
+                                <div class="stat-label">Orphans Supported</div>
+                            </div>
+                            <div class="achievement-stat">
+                                <div class="stat-number">42</div>
+                                <div class="stat-label">Disabled Children Helped</div>
+                            </div>
+                            <div class="achievement-stat">
+                                <div class="stat-number">94</div>
+                                <div class="stat-label">School Sponsorships</div>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-highlight">
+                            <div class="highlight-title">🏠 Family Reunions</div>
+                            <p>Successfully reunited 28 children with their families after rehabilitation</p>
+                        </div>
+                    </div>
+                    <div class="month-badge">
+                        <div class="month-name">NOV</div>
+                        <div class="year">2024</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- School Sponsorship Programs - UPDATED WITH IMAGES -->
+    <section class="sponsorship-section">
+        <div class="container">
+            <h2 class="section-title animate">School Sponsorship Programs</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.2rem; color: #555;">
+                Choose how you want to support a child's education and future
+            </p>
+            
+            <div class="sponsorship-cards">
+                <!-- Primary School Sponsor Card -->
+                <div class="sponsorship-card">
+                    <div class="sponsorship-image">
+                        <img src="https://images.unsplash.com/photo-1497636577773-f1231844b336?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Primary School Children Learning">
+                        <div class="sponsorship-image-overlay">
+                            <div class="sponsorship-title-overlay">Primary School Sponsor</div>
+                        </div>
+                    </div>
+                    <div class="sponsorship-content">
+                        <div class="sponsorship-benefits">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="School Fees Benefits" class="benefit-image">
+                            <p class="benefit-caption">Full school fees for one year covering tuition and all educational expenses</p>
+                            
+                            <img src="https://images.unsplash.com/photo-1555445091-5b2c03fa4b8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="School Uniform" class="benefit-image">
+                            <p class="benefit-caption">Complete school uniform including shoes for proper school attendance</p>
+                            
+                            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w-800&q=80" alt="Textbooks and Stationery" class="benefit-image">
+                            <p class="benefit-caption">All required textbooks, exercise books, pens, pencils, and stationery</p>
+                        </div>
+                        
+                        <div class="sponsorship-cost">
+                            $25<span>/month</span>
+                        </div>
+                        <a href="index.html#donate" class="cta-button" style="padding: 0.8rem 2rem; font-size: 1rem;">SPONSOR NOW</a>
+                    </div>
+                </div>
+                
+                <!-- Secondary School Sponsor Card -->
+                <div class="sponsorship-card">
+                    <div class="sponsorship-image">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Secondary School Students">
+                        <div class="sponsorship-image-overlay">
+                            <div class="sponsorship-title-overlay">Secondary School Sponsor</div>
+                        </div>
+                    </div>
+                    <div class="sponsorship-content">
+                        <div class="sponsorship-benefits">
+                            <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Secondary Education" class="benefit-image">
+                            <p class="benefit-caption">Complete secondary school fees including tuition and examination fees</p>
+                            
+                            <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="School Uniform" class="benefit-image">
+                            <p class="benefit-caption">Full secondary school uniform with all required accessories</p>
+                            
+                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Learning Materials" class="benefit-image">
+                            <p class="benefit-caption">All textbooks, laboratory materials, and learning resources</p>
+                        </div>
+                        
+                        <div class="sponsorship-cost">
+                            $35<span>/month</span>
+                        </div>
+                        <a href="index.html#donate" class="cta-button" style="padding: 0.8rem 2rem; font-size: 1rem;">SPONSOR NOW</a>
+                    </div>
+                </div>
+                
+                <!-- Vocational Training Sponsor Card -->
+                <div class="sponsorship-card">
+                    <div class="sponsorship-image">
+                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Vocational Training">
+                        <div class="sponsorship-image-overlay">
+                            <div class="sponsorship-title-overlay">Vocational Training Sponsor</div>
+                        </div>
+                    </div>
+                    <div class="sponsorship-content">
+                        <div class="sponsorship-benefits">
+                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vocational Training" class="benefit-image">
+                            <p class="benefit-caption">Full vocational training fees for technical skills development</p>
+                            
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Training Materials" class="benefit-image">
+                            <p class="benefit-caption">All required training materials, tools, and equipment for hands-on learning</p>
+                            
+                            <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Apprenticeship" class="benefit-image">
+                            <p class="benefit-caption">Apprenticeship placement and job assistance after completion</p>
+                        </div>
+                        
+                        <div class="sponsorship-cost">
+                            $40<span>/month</span>
+                        </div>
+                        <a href="index.html#donate" class="cta-button" style="padding: 0.8rem 2rem; font-size: 1rem;">SPONSOR NOW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disabled Children Support -->
+    <section class="disabled-section">
+        <div class="container">
+            <h2 class="section-title white animate">Support for Disabled Children</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.2rem; color: rgba(255,255,255,0.9);">
+                Specialized care and support for children with disabilities to help them reach their full potential
+            </p>
+            
+            <div class="disabled-grid">
+                <div class="disabled-card">
+                    <div class="disabled-icon">
+                        <i class="fas fa-wheelchair"></i>
+                    </div>
+                    <h3>Mobility Assistance</h3>
+                    <p>Providing wheelchairs, crutches, and other mobility aids to help disabled children move freely and independently.</p>
+                </div>
+                
+                <div class="disabled-card">
+                    <div class="disabled-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3>Medical Care</h3>
+                    <p>Specialized medical treatment, therapy sessions, and regular health check-ups for various disabilities.</p>
+                </div>
+                
+                <div class="disabled-card">
+                    <div class="disabled-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Special Education</h3>
+                    <p>Adapted learning programs and one-on-one tutoring for children with learning disabilities.</p>
+                </div>
+                
+                <div class="disabled-card">
+                    <div class="disabled-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Therapy Services</h3>
+                    <p>Physical, occupational, and speech therapy to help disabled children develop essential life skills.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 4rem;">
+                <div style="display: inline-block; background: rgba(255, 255, 255, 0.1); padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px);">
+                    <div style="font-size: 2.5rem; color: #ffcc00; font-weight: bold; margin-bottom: 1rem;">420+</div>
+                    <div style="font-size: 1.2rem; color: white;">Disabled Children Supported Since 2018</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Statistics -->
+    <section class="impact-section">
+        <div class="container">
+            <h2 class="section-title animate">Our Overall Impact</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.2rem; color: #555;">
+                Cumulative results since we started our mission in 2018
+            </p>
+            
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <div class="impact-number">2,300+</div>
+                    <div class="impact-text">Street Children Rescued</div>
+                    <p style="color: #666; font-size: 0.9rem; margin-top: 0.5rem;">From streets of Kampala, Jinja & Mbale</p>
+                </div>
+                
+                <div class="impact-item">
+                    <div class="impact-number">850+</div>
+                    <div class="impact-text">Orphans Supported</div>
+                    <p style="color: #666; font-size: 0.9rem; margin-top: 0.5rem;">With shelter, education & healthcare</p>
+                </div>
+                
+                <div class="impact-item">
+                    <div class="impact-number">420+</div>
+                    <div class="impact-text">Disabled Children Helped</div>
+                    <p style="color: #666; font-size: 0.9rem; margin-top: 0.5rem;">Specialized care & education</p>
+                </div>
+                
+                <div class="impact-item">
+                    <div class="impact-number">1,750+</div>
+                    <div class="impact-text">School Sponsorships</div>
+                    <p style="color: #666; font-size: 0.9rem; margin-top: 0.5rem;">Children currently in school</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Orphan Support Programs -->
+    <section class="orphan-section">
+        <div class="container">
+            <h2 class="section-title animate">Orphan Support Programs</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.2rem; color: #555;">
+                Comprehensive care and support for orphaned children to help them build stable futures
+            </p>
+            
+            <div class="orphan-programs">
+                <div class="orphan-program">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Children's Shelter">
+                    </div>
+                    <div class="program-content">
+                        <h3>Safe Shelter Program</h3>
+                        <p>Providing safe, nurturing homes for orphans with 24/7 caregiver support and family-style living environment.</p>
+                        <ul class="program-features">
+                            <li>Safe housing with beds</li>
+                            <li>Nutritious meals daily</li>
+                            <li>Clean clothing & hygiene</li>
+                            <li>24/7 caregiver support</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="orphan-program">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Children Learning">
+                    </div>
+                    <div class="program-content">
+                        <h3>Education Support</h3>
+                        <p>Ensuring orphans receive quality education from primary through secondary and vocational training.</p>
+                        <ul class="program-features">
+                            <li>School fees paid in full</li>
+                            <li>Uniforms & textbooks</li>
+                            <li>After-school tutoring</li>
+                            <li>Career guidance</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="orphan-program">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Children Healthcare">
+                    </div>
+                    <div class="program-content">
+                        <h3>Healthcare & Counseling</h3>
+                        <p>Comprehensive medical care and psychological support to help orphans heal and thrive.</p>
+                        <ul class="program-features">
+                            <li>Regular medical check-ups</li>
+                            <li>Psychological counseling</li>
+                            <li>Trauma therapy</li>
+                            <li>Life skills training</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="stories-section">
+        <div class="container">
+            <h2 class="section-title animate">Transformation Stories</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.2rem; color: #555;">
+                Real stories of children whose lives have been transformed through our programs
+            </p>
+            
+            <div class="stories-grid">
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1536922645426-5d658ab49b81?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Moses - Success Story">
+                    </div>
+                    <div class="story-content">
+                        <h4>Moses - From Streets to School</h4>
+                        <p>"Found living on Kampala streets for 3 years. Now in Senior 3, top of his class, dreams of becoming a doctor."</p>
+                        <div class="story-type">Street Child Rescue</div>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1516627145497-ae695c304c12?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="David - Success Story">
+                    </div>
+                    <div class="story-content">
+                        <h4>David - Overcoming Disability</h4>
+                        <p>"Born with cerebral palsy, received wheelchair and special education. Now excelling in Primary 6."</p>
+                        <div class="story-type">Disabled Support</div>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Grace - Success Story">
+                    </div>
+                    <div class="story-content">
+                        <h4>Grace - Orphan to Nurse</h4>
+                        <p>"Lost both parents at 12. RUFA provided education and support. Now studying nursing at university."</p>
+                        <div class="story-type">Orphan Support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Join Our Monthly Impact</h2>
+            <p class="cta-text">Become a monthly sponsor and help us rescue more street children, support orphans, educate disabled children, and provide school sponsorships every month.</p>
+            <a href="index.html#donate" class="cta-button">BECOME A MONTHLY SPONSOR <i class="fas fa-hand-holding-heart"></i></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <div class="logo-container" style="margin-bottom: 1rem;">
+                        <div class="logo-img" style="width: 50px; height: 50px; font-size: 1.5rem;">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="RUFA Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                        </div>
+                        <div class="logo-text">
+                            <div class="logo" style="font-size: 1.5rem;">RUFA GLOBAL ORGANIZATION</div>
+                        </div>
+                    </div>
+                    <p>We rescue street children, support orphans, help disabled children, and provide school sponsorships to give every child a chance at a better future.</p>
+                    <p>Every Child Deserves a Childhood.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Our Programs</h4>
+                    <a href="#street">Street Children Rescue</a>
+                    <a href="#orphans">Orphan Support</a>
+                    <a href="#disabled">Disabled Children Care</a>
+                    <a href="#sponsorship">School Sponsorship</a>
+                    <a href="#education">Education Programs</a>
+                    <a href="#healthcare">Healthcare Services</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Monthly Impact</h4>
+                    <a href="#january">January 2024 Report</a>
+                    <a href="#march">March 2024 Report</a>
+                    <a href="#june">June 2024 Report</a>
+                    <a href="#september">September 2024 Report</a>
+                    <a href="#november">November 2024 Report</a>
+                    <a href="#all-reports">All Monthly Reports</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Kalema Road, Kampala, Uganda</p>
+                    <p><i class="fas fa-phone"></i> +256 772 342831</p>
+                    <p><i class="fas fa-envelope"></i> info@rufaglobal.org</p>
+                    <p><i class="fas fa-calendar"></i> Founded: 2018 | Children Helped: 3,570+</p>
+                    
+                    <h4 style="margin-top: 1.5rem;">Monthly Updates</h4>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Email for monthly reports">
+                        <button type="submit"><i class="fas fa-envelope"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2018-<span id="currentYear"></span> RUFA GLOBAL ORGANIZATION. All rights reserved. | To Raise The Future Generation</p>
+                <p style="margin-top: 0.5rem;">Current as of: <span id="footerDate"></span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating CTA Buttons -->
+    <div class="floating-cta">
+        <a href="index.html#donate" class="floating-btn">
+            <i class="fas fa-donate"></i>
+            <span class="floating-label">Sponsor a Child</span>
+        </a>
+        <a href="index.html#contact" class="floating-btn">
+            <i class="fas fa-envelope"></i>
+            <span class="floating-label">Contact Us</span>
+        </a>
+        <a href="#" class="floating-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            <i class="fas fa-arrow-up"></i>
+            <span class="floating-label">Back to Top</span>
+        </a>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="videoModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center;">
+        <div style="position: relative; width: 90%; max-width: 800px;">
+            <button id="closeModal" style="position: absolute; top: -40px; right: 0; background: none; border: none; color: white; font-size: 2rem; cursor: pointer;">
+                <i class="fas fa-times"></i>
+            </button>
+            <video id="modalVideo" controls style="width: 100%; border-radius: 10px;">
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    <script>
+        // Display current date
+        function updateDate() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = now.toLocaleDateString('en-US', options);
+            
+            document.getElementById('dateDisplay').textContent = formattedDate;
+            document.getElementById('footerDate').textContent = formattedDate;
+            document.getElementById('currentYear').textContent = now.getFullYear();
+        }
+        
+        // Mobile menu functionality
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        const mobileNavSidebar = document.getElementById('mobileNavSidebar');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+        
+        // Open mobile menu
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileNavOverlay.classList.add('active');
+            mobileNavSidebar.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Close mobile menu
+        function closeMobileMenu() {
+            mobileNavOverlay.classList.remove('active');
+            mobileNavSidebar.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        mobileNavOverlay.addEventListener('click', closeMobileMenu);
+        mobileNavClose.addEventListener('click', closeMobileMenu);
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                closeMobileMenu();
+                
+                // Handle navigation to index.html with hash
+                const href = this.getAttribute('href');
+                if (href.includes('index.html')) {
+                    window.location.href = href;
+                }
+            });
+        });
+        
+        // Call on page load
+        updateDate();
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate achievement months
+                    if (entry.target.classList.contains('achievement-month')) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, 200);
+                    }
+                    
+                    // Animate cards
+                    const cards = entry.target.querySelectorAll('.sponsorship-card, .disabled-card, .impact-item, .orphan-program, .story-card');
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('visible');
+                        }, index * 200);
+                    });
+                }
+            });
+        }, observerOptions);
+        
+        // Observe sections for animation
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Observe specific elements
+        document.querySelectorAll('.achievement-month, .sponsorship-card, .disabled-card, .impact-item, .orphan-program, .story-card, footer').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Video functionality
+        const mainVideo = document.getElementById('mainVideo');
+        const videoOverlay = document.getElementById('videoOverlay');
+        const playButton = document.getElementById('playButton');
+        const videoModal = document.getElementById('videoModal');
+        const modalVideo = document.getElementById('modalVideo');
+        const closeModal = document.getElementById('closeModal');
+        
+        // Play main video
+        playButton.addEventListener('click', function() {
+            mainVideo.play();
+            videoOverlay.style.display = 'none';
+        });
+        
+        // Show video modal
+        function playVideo(videoSrc) {
+            modalVideo.src = videoSrc;
+            videoModal.style.display = 'flex';
+            modalVideo.play();
+        }
+        
+        // Close modal
+        closeModal.addEventListener('click', function() {
+            videoModal.style.display = 'none';
+            modalVideo.pause();
+            modalVideo.currentTime = 0;
+        });
+        
+        // Close modal when clicking outside
+        videoModal.addEventListener('click', function(e) {
+            if (e.target === videoModal) {
+                videoModal.style.display = 'none';
+                modalVideo.pause();
+                modalVideo.currentTime = 0;
+            }
+        });
+        
+        // Animate numbers in monthly achievements
+        function animateAchievementNumbers() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            statNumbers.forEach(element => {
+                const finalText = element.textContent;
+                const finalNumber = parseInt(finalText);
+                
+                if (!isNaN(finalNumber)) {
+                    element.textContent = '0';
+                    
+                    let current = 0;
+                    const increment = finalNumber / 20;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= finalNumber) {
+                            element.textContent = finalText;
+                            clearInterval(timer);
+                        } else {
+                            element.textContent = Math.floor(current);
+                        }
+                    }, 50);
+                }
+            });
+        }
+        
+        // Trigger number animation when achievements section is in view
+        const achievementsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(animateAchievementNumbers, 500);
+                    achievementsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        const achievementsSection = document.querySelector('.achievements-section');
+        if (achievementsSection) {
+            achievementsObserver.observe(achievementsSection);
+        }
+        
+        // Newsletter subscription
+        document.querySelectorAll('.newsletter-form button').forEach(button => {
+            button.addEventListener('click', function() {
+                const form = this.closest('.newsletter-form');
+                const emailInput = form.querySelector('input');
+                if (emailInput.value && emailInput.value.includes('@')) {
+                    alert('Thank you for subscribing to RUFA monthly impact reports!');
+                    emailInput.value = '';
+                } else {
+                    alert('Please enter a valid email address.');
+                }
+            });
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Update date every minute
+        setInterval(updateDate, 60000);
+    </script>
+</body>
+</html>

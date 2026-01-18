@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Transfer Donation - RUFA GLOBAL ORGANIZATION</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: #1a5276;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ffcc00, #ffd633);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #1a5276;
+            animation: pulse 2s infinite alternate;
+            box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3); }
+            100% { transform: scale(1.05); box-shadow: 0 6px 18px rgba(255, 204, 0, 0.5); }
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .logo span {
+            color: #ffcc00;
+        }
+        
+        .org-tagline {
+            font-size: 0.9rem;
+            color: #ffcc00;
+            font-style: italic;
+            margin-top: 0.2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ffcc00;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(26, 82, 118, 0.9), rgba(26, 82, 118, 0.95)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2011&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 204, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 20%, rgba(26, 82, 118, 0.1) 0%, transparent 50%);
+            animation: float 20s infinite ease-in-out alternate;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-20px, 20px) scale(1.05); }
+            100% { transform: translate(10px, -10px) scale(1); }
+        }
+        
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page-subtitle {
+            font-size: 1.8rem;
+            color: #ffcc00;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+        
+        .page-description {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+        
+        /* Section Styling */
+        .section {
+            padding: 5rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a5276;
+            margin-bottom: 3rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .section-title.animate {
+            animation-delay: 0.3s;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background-color: #ffcc00;
+            margin: 0.5rem auto 2rem;
+            transform: scaleX(0);
+            transform-origin: center;
+            animation: expand 0.8s ease-out 0.5s forwards;
+        }
+
+        @keyframes expand {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+        
+        /* Bank Transfer Section */
+        .bank-transfer-section {
+            background-color: #f0f7ff;
+        }
+        
+        .transfer-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .transfer-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .transfer-header {
+            padding: 2.5rem;
+            background-color: #1a5276;
+            color: white;
+            text-align: center;
+        }
+        
+        .transfer-header h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .transfer-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .bank-details {
+            padding: 3rem;
+        }
+        
+        .currency-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #f0f7ff;
+        }
+        
+        .currency-tab {
+            flex: 1;
+            padding: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .currency-tab:hover {
+            color: #1a5276;
+        }
+        
+        .currency-tab.active {
+            color: #1a5276;
+            border-bottom-color: #ffcc00;
+        }
+        
+        .currency-content {
+            display: none;
+        }
+        
+        .currency-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .bank-info {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-left: 5px solid #ffcc00;
+        }
+        
+        .bank-info h4 {
+            color: #1a5276;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .bank-info h4 i {
+            color: #ffcc00;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .info-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-label {
+            display: block;
+            font-weight: 600;
+            color: #1a5276;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .info-value {
+            display: block;
+            font-size: 1.2rem;
+            color: #333;
+            padding: 0.8rem;
+            background-color: white;
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+            font-family: 'Courier New', monospace;
+            position: relative;
+        }
+        
+        .copy-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #1a5276;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+        
+        .copy-button:hover {
+            background-color: #2c7bb6;
+        }
+        
+        .copy-button.copied {
+            background-color: #4CAF50;
+        }
+        
+        /* Instructions Section */
+        .instructions {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .instructions h4 {
+            color: #1a5276;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #ffcc00;
+            color: #1a5276;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .step h5 {
+            color: #1a5276;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        .step p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* Confirmation Form */
+        .confirmation-form {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: 2rem;
+        }
+        
+        .confirmation-form h4 {
+            color: #1a5276;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1a5276;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #1a5276;
+            box-shadow: 0 0 0 2px rgba(26, 82, 118, 0.2);
+        }
+        
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a5276' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+            padding-right: 2.5rem;
+        }
+        
+        .submit-button {
+            background-color: #ffcc00;
+            color: #1a5276;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-button:hover::before {
+            left: 100%;
+        }
+        
+        .submit-button:hover {
+            background-color: #ffd633;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        
+        /* Mobile Money Option */
+        .mobile-money-section {
+            background-color: white;
+        }
+        
+        .mobile-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .mobile-option {
+            background-color: #f9f9f9;
+            padding: 2.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .mobile-option:hover {
+            transform: translateY(-10px);
+            border-color: #ffcc00;
+        }
+        
+        .mobile-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .mtn-icon {
+            color: #ffcc00;
+        }
+        
+        .airtel-icon {
+            color: #E20074;
+        }
+        
+        .mobile-option h3 {
+            color: #1a5276;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+        
+        .mobile-option p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .mobile-details {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: left;
+        }
+        
+        .mobile-details p {
+            margin-bottom: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .mobile-details strong {
+            color: #1a5276;
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background-color: #ffcc00;
+            color: #1a5276;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            background-color: #ffd633;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        .cta-button i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0d3c5c;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h4 {
+            color: #ffcc00;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-column p {
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: #ffcc00;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .page-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 1rem;
+            }
+            
+            .page-header {
+                padding: 4rem 1rem;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .bank-details {
+                padding: 2rem;
+            }
+            
+            .currency-tabs {
+                flex-direction: column;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .bank-details {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo-container">
+                    <div class="logo-img">RGO</div>
+                    <div class="logo-text">
+                        <div class="logo">RUFA GLOBAL ORGANIZATION</div>
+                        <div class="org-tagline">TO RAISE THE FUTURE GENERATION</div>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="donation.html" class="active">Donate</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Bank Transfer Donation</h1>
+            <div class="page-subtitle">Secure & Direct Support for Our Mission</div>
+            <p class="page-description">
+                Make a direct bank transfer to support our education, healthcare, and empowerment programs across Uganda. Your donation goes directly to where it's needed most.
+            </p>
+        </div>
+    </section>
+
+    <!-- Bank Transfer Section -->
+    <section class="section bank-transfer-section">
+        <div class="container">
+            <h2 class="section-title animate">Bank Transfer Details</h2>
+            
+            <div class="transfer-container" id="transferContainer">
+                <div class="transfer-header">
+                    <h3><i class="fas fa-university"></i> RUFA GLOBAL ORGANIZATION Bank Details</h3>
+                    <p>Use the details below to make a direct bank transfer from anywhere in the world</p>
+                </div>
+                
+                <div class="bank-details">
+                    <div class="currency-tabs">
+                        <button class="currency-tab active" onclick="openCurrency('ugx')">UGX Account (Uganda Shillings)</button>
+                        <button class="currency-tab" onclick="openCurrency('usd')">USD Account (US Dollars)</button>
+                        <button class="currency-tab" onclick="openCurrency('eur')">EUR Account (Euros)</button>
+                    </div>
+                    
+                    <!-- UGX Account -->
+                    <div id="ugx" class="currency-content active">
+                        <div class="bank-info">
+                            <h4><i class="fas fa-money-bill-wave"></i> Stanbic Bank Uganda - UGX Account</h4>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">Bank Name</span>
+                                    <span class="info-value">
+                                        Stanbic Bank Uganda Limited
+                                        <button class="copy-button" onclick="copyToClipboard('Stanbic Bank Uganda Limited')">Copy</button>
+                                    </span>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <span class="info-label">Account Name</span>
+                                    <span class="info-value">
+                                        RUFA GLOBAL ORGANIZATION
+                                        <button class="copy-button" onclick="copyToClipboard('RUFA GLOBAL ORGANIZATION')">Copy</button>
+                                    </span>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <span class="info-label">Account Number</span>
+                                    <span class="info-value">
+                                        903000598756
+                                        <button class="copy-button" onclick="copyToClipboard('903000598756')">Copy</button>
+                                    </span>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <span class="info-label">Branch</span>
+                                    <span class="info-value">
+                                        Kampala Road Branch
+                                        <button class="copy-button" onclick="copyToClipboard('Kampala Road Branch')">Copy</button>
+                                    </span>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <span class="info-label">Swift Code</span>
+                                    <span class="info-value">
+                                        SBICUGKX
+                                        <button class="copy-button" onclick="copyToClipboard('SBICUGKX')">Copy</button>
+                                    </span>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <span class="info-label">Branch Code</span>
+                                    <span class="info-value">
+                                        040176
+                                        <button class="copy-button" onclick="copyToClipboard('040176')">Copy</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="instructions">
+                            <h4>For Local Transfers Within Uganda:</h4>
+                            <div class="steps">
+                                <div class="step">
+                                    <div class="step-number">1</div>
+                                    <h5>Mobile Banking</h5>
+                                    <p>Use your bank's mobile app to transfer to account number: <strong>903000598756</strong></p>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">2</div>
+                                    <h5>Bank Branch</h5>
+                                    <p>Visit any Stanbic Bank branch and fill a deposit slip with our account details</p>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">3</div>
+                                    <h5>ATM Transfer</h5>
+                                    <p>Use any Stanbic Bank ATM to transfer funds to our account</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- USD Account -->
+                    <div id="usd" class="currency-content">
+                        <div class="bank-info">
+                            <h4><i class="fas fa-dollar-sign"></i> Stanbic Bank Uganda - USD Account</h4>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">Bank Name</span>
+                                    <span class="info-value">
+                                        Stanbic Bank Uganda Limited
+                                        <button class="copy-button" onclick="copyToClipboard('Stanbic Bank Uganda Limited')">Copy</button>
+                                    </span>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <span class="info-label">Account Name</span>
+                                    <span class="info-value">
+                                        RUFA GLOBAL ORGANIZATION
+                                        <button class="copy-button" onclick="copyToClipboard('RUFA GLOBAL ORGANIZATION')">Copy</button>
+                                    </span>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <span class="info-label">Account Number (USD)</span>
+                                    <span class="info-value">
+                                        903000598757
+                                        <button class="copy-button" onclick="copyToClipboard('903000598757')">Copy</button>
+                                    </span>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <span class="info-label">Currency</span>
+                                    <span class="info-value">
+                                        US Dollars (USD)
+                                        <button class="copy-button" onclick="copyToClipboard('US Dollars')">Copy</button>
+                                    </span>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <span class="info-label">Swift Code</span>
+                                    <span class="info-value">
+                                        SBICUGKX
+                                        <button class="copy-button" onclick="copyToClipboard('SBICUGKX')">Copy</button>
+                                    </span>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <span class="info-label">Bank Address</span>
+                                    <span class="info-value">
+                                        Plot 14, Hannington Road, Kampala, Uganda
+                                        <button class="copy-button" onclick="copyToClipboard('Plot 14, Hannington Road, Kampala, Uganda')">Copy</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="instructions">
+                            <h4>For International USD Transfers:</h4>
+                            <div class="steps">
+                                <div class="step">
+                                    <div class="step-number">1</div>
+                                    <h5>Provide Details</h5>
+                                    <p>Give your bank our USD account details and SWIFT code</p>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">2</div>
+                                    <h5>Include Reference</h5>
+                                    <p>Always include "DONATION" and your name in transfer reference</p>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">3</div>
+                                    <h5>Confirm Fees</h5>
+                                    <p>Check with your bank for international transfer fees</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- EUR Account -->
+                    <div id="eur" class="currency-content">
+                        <div class="bank-info">
+                            <h4><i class="fas fa-euro-sign"></i> Stanbic Bank Uganda - EUR Account</h4>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">Bank Name</span>
+                                    <span class="info-value">
+                                        Stanbic Bank Uganda Limited
+                                        <button class="copy-button" onclick="copyToClipboard('Stanbic Bank Uganda Limited')">Copy</button>
+                                    </span>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <span class="info-label">Account Name</span>
+                                    <span class="info-value">
+                                        RUFA GLOBAL ORGANIZATION
+                                        <button class="copy-button" onclick="copyToClipboard('RUFA GLOBAL ORGANIZATION')">Copy</button>
+                                    </span>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <span class="info-label">Account Number (EUR)</span>
+                                    <span class="info-value">
+                                        903000598758
+                                        <button class="copy-button" onclick="copyToClipboard('903000598758')">Copy</button>
+                                    </span>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <span class="info-label">Currency</span>
+                                    <span class="info-value">
+                                        Euros (EUR)
+                                        <button class="copy-button" onclick="copyToClipboard('Euros')">Copy</button>
+                                    </span>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <span class="info-label">Swift Code</span>
+                                    <span class="info-value">
+                                        SBICUGKX
+                                        <button class="copy-button" onclick="copyToClipboard('SBICUGKX')">Copy</button>
+                                    </span>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <span class="info-label">IBAN (if required)</span>
+                                    <span class="info-value">
+                                        UG6000000000000000000123
+                                        <button class="copy-button" onclick="copyToClipboard('UG6000000000000000000123')">Copy</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="instructions">
+                            <h4>Important Notes for Euro Transfers:</h4>
+                            <div class="steps">
+                                <div class="step">
+                                    <div class="step-number">1</div>
+                                    <h5>European Transfers</h5>
+                                    <p>Use IBAN for transfers within the European Union</p>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">2</div>
+                                    <h5>Correspondent Bank</h5>
+                                    <p>For EUR transfers, funds route through correspondent banks in Europe</p>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">3</div>
+                                    <h5>Transfer Time</h5>
+                                    <p>EUR transfers typically take 2-3 business days to reach our account</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Confirmation Form -->
+                    <div class="confirmation-form">
+                        <h4><i class="fas fa-receipt"></i> Send Donation Confirmation</h4>
+                        <p style="color: #666; margin-bottom: 1.5rem;">After making your bank transfer, please fill this form so we can send you a receipt and track your donation.</p>
+                        
+                        <form id="confirmationForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="donorName">Full Name *</label>
+                                    <input type="text" id="donorName" class="form-control" placeholder="Your Full Name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="donorEmail">Email Address *</label>
+                                    <input type="email" id="donorEmail" class="form-control" placeholder="Your Email Address" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="donationAmount">Donation Amount *</label>
+                                    <input type="number" id="donationAmount" class="form-control" placeholder="Amount donated" required min="1">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="donationCurrency">Currency *</label>
+                                    <select id="donationCurrency" class="form-control" required>
+                                        <option value="">Select Currency</option>
+                                        <option value="UGX">Uganda Shillings (UGX)</option>
+                                        <option value="USD">US Dollars (USD)</option>
+                                        <option value="EUR">Euros (EUR)</option>
+                                        <option value="GBP">British Pounds (GBP)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="transferDate">Transfer Date *</label>
+                                    <input type="date" id="transferDate" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="donationType">Donation Purpose</label>
+                                    <select id="donationType" class="form-control">
+                                        <option value="general">General Fund (Where Most Needed)</option>
+                                        <option value="education">Education Program</option>
+                                        <option value="healthcare">Healthcare Program</option>
+                                        <option value="women">Women Empowerment</option>
+                                        <option value="aid">Humanitarian Aid</option>
+                                        <option value="disability">Disability Support</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="transactionId">Transaction/Reference Number</label>
+                                <input type="text" id="transactionId" class="form-control" placeholder="Bank transaction reference number">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="donorMessage">Message (Optional)</label>
+                                <textarea id="donorMessage" class="form-control" placeholder="Any message or dedication for your donation" rows="3"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-button">
+                                <i class="fas fa-paper-plane"></i> SEND CONFIRMATION
+                            </button>
+                            
+                            <p style="text-align: center; margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                                We will send a donation receipt to your email within 24-48 hours.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Money Section -->
+    <section class="section mobile-money-section">
+        <div class="container">
+            <h2 class="section-title animate">Mobile Money Donations (Uganda)</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: #555; font-size: 1.1rem;">
+                For quick and convenient donations within Uganda, you can use Mobile Money
+            </p>
+            
+            <div class="mobile-options">
+                <div class="mobile-option">
+                    <div class="mobile-icon mtn-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>MTN Mobile Money</h3>
+                    <p>Send your donation directly via MTN Mobile Money</p>
+                    
+                    <div class="mobile-details">
+                        <p><strong>Recipient Name:</strong> RUFA Global Org</p>
+                        <p><strong>Mobile Number:</strong> +256 772 342831</p>
+                        <p><strong>Reference:</strong> DONATION</p>
+                        <p><strong>Service:</strong> Send Money</p>
+                    </div>
+                    
+                    <button class="cta-button" style="margin-top: 1.5rem;" onclick="showMobileInstructions('mtn')">
+                        <i class="fas fa-sms"></i> DONATE VIA MTN
+                    </button>
+                </div>
+                
+                <div class="mobile-option">
+                    <div class="mobile-icon airtel-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Airtel Money</h3>
+                    <p>Make your donation through Airtel Money</p>
+                    
+                    <div class="mobile-details">
+                        <p><strong>Recipient Name:</strong> RUFA Global Org</p>
+                        <p><strong>Mobile Number:</strong> +256 752 891204</p>
+                        <p><strong>Reference:</strong> DONATION</p>
+                        <p><strong>Service:</strong> Send Money</p>
+                    </div>
+                    
+                    <button class="cta-button" style="margin-top: 1.5rem;" onclick="showMobileInstructions('airtel')">
+                        <i class="fas fa-sms"></i> DONATE VIA AIRTEL
+                    </button>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background-color: #f0f7ff; border-radius: 10px;">
+                <h3 style="color: #1a5276; margin-bottom: 1rem;">Need Help with Your Donation?</h3>
+                <p style="color: #666; margin-bottom: 1.5rem;">Contact our donation support team for assistance with bank transfers or mobile money donations.</p>
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                    <div style="text-align: center;">
+                        <i class="fas fa-phone-alt" style="color: #1a5276; font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+                        <p style="font-weight: 600; color: #1a5276;">Call Us</p>
+                        <p>+256 772 342831</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <i class="fas fa-envelope" style="color: #1a5276; font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+                        <p style="font-weight: 600; color: #1a5276;">Email Us</p>
+                        <p>donations@rufaglobal.org</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <i class="fas fa-clock" style="color: #1a5276; font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+                        <p style="font-weight: 600; color: #1a5276;">Support Hours</p>
+                        <p>Mon-Fri: 8:00 AM - 5:00 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <div class="logo-container" style="margin-bottom: 1rem;">
+                        <div class="logo-img" style="width: 50px; height: 50px; font-size: 1.5rem;">RGO</div>
+                        <div class="logo-text">
+                            <div class="logo" style="font-size: 1.5rem;">RUFA GLOBAL</div>
+                            <div class="org-tagline" style="font-size: 0.8rem;">TO RAISE THE FUTURE GENERATION</div>
+                        </div>
+                    </div>
+                    <p>Your bank transfer donation goes directly to support our education, healthcare, and empowerment programs across Uganda.</p>
+                    <p>Let's Make Change Together.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Bank Information</h4>
+                    <p><i class="fas fa-university"></i> Stanbic Bank Uganda</p>
+                    <p><i class="fas fa-user-tie"></i> Account: RUFA GLOBAL ORGANIZATION</p>
+                    <p><i class="fas fa-hashtag"></i> UGX: 903000598756</p>
+                    <p><i class="fas fa-hashtag"></i> USD: 903000598757</p>
+                    <p><i class="fas fa-code"></i> SWIFT: SBICUGKX</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="programs.html">Programs</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="donation.html">Donate</a>
+                    <a href="contact.html#faqContainer">FAQs</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Donation Support</h4>
+                    <p><i class="fas fa-phone"></i> +256 772 342831</p>
+                    <p><i class="fas fa-envelope"></i> donations@rufaglobal.org</p>
+                    <p><i class="fas fa-receipt"></i> Receipts within 48 hours</p>
+                    <p><i class="fas fa-shield-alt"></i> Secure & Transparent</p>
+                    <p><i class="fas fa-file-invoice-dollar"></i> Tax ID: 123-456-789</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2018-<span id="currentYear"></span> RUFA GLOBAL ORGANIZATION. All rights reserved. | To Raise The Future Generation</p>
+                <p style="margin-top: 0.5rem;">Registered Non-Profit Organization in Uganda | Registration No: 12345/2018 | All donations are tax-deductible</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Instructions Modal -->
+    <div id="mobileModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 10000; align-items: center; justify-content: center;">
+        <div style="background-color: white; padding: 2.5rem; border-radius: 10px; max-width: 500px; width: 90%; position: relative;">
+            <button onclick="closeMobileModal()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.5rem; color: #666; cursor: pointer;">×</button>
+            
+            <div id="mobileModalContent">
+                <!-- Content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Display current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Set default date to today
+        document.getElementById('transferDate').valueAsDate = new Date();
+        
+        // Currency tab functionality
+        function openCurrency(currency) {
+            // Hide all currency contents
+            document.querySelectorAll('.currency-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all currency tabs
+            document.querySelectorAll('.currency-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show the selected currency content
+            document.getElementById(currency).classList.add('active');
+            
+            // Activate the clicked tab
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Copy to clipboard function
+        function copyToClipboard(text) {
+            const button = event.currentTarget;
+            
+            // Copy text to clipboard
+            navigator.clipboard.writeText(text).then(() => {
+                // Change button text temporarily
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+                
+                // Show notification
+                showNotification('Copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                showNotification('Failed to copy. Please select and copy manually.');
+            });
+        }
+        
+        // Show notification
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background-color: #4CAF50;
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 5px;
+                z-index: 10001;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                animation: slideIn 0.3s ease-out;
+            `;
+            
+            // Add animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Add to page
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-out forwards';
+                
+                // Add slideOut animation
+                const slideOutStyle = document.createElement('style');
+                slideOutStyle.textContent = `
+                    @keyframes slideOut {
+                        from { transform: translateX(0); opacity: 1; }
+                        to { transform: translateX(100%); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(slideOutStyle);
+                
+                // Remove element after animation
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+        
+        // Mobile money instructions
+        function showMobileInstructions(provider) {
+            const modal = document.getElementById('mobileModal');
+            const content = document.getElementById('mobileModalContent');
+            
+            let html = '';
+            
+            if (provider === 'mtn') {
+                html = `
+                    <h3 style="color: #1a5276; margin-bottom: 1.5rem; border-bottom: 2px solid #ffcc00; padding-bottom: 0.5rem;">MTN Mobile Money Instructions</h3>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <p style="color: #666; margin-bottom: 1rem;">Follow these steps to donate via MTN Mobile Money:</p>
+                        
+                        <div style="background-color: #f9f9f9; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="width: 30px; height: 30px; background-color: #ffcc00; color: #1a5276; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">1</div>
+                                <p style="margin: 0;">Go to your MTN Mobile Money menu</p>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="width: 30px; height: 30px; background-color: #ffcc00; color: #1a5276; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">2</div>
+                                <p style="margin: 0;">Select "Send Money"</p>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="width: 30px; height: 30px; background-color: #ffcc00; color: #1a5276; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">3</div>
+                                <p style="margin: 0;">Enter phone number: <strong>+256 772 342831</strong></p>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="width: 30px; height: 30px; background-color: #ffcc00; color: #1a5276; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">4</div>
+                                <p style="margin: 0;">Enter the amount you wish to donate</p>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="width: 30px; height: 30px; background-color: #ffcc00; color: #1a5276; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">5</div>
+                                <p style="margin: 0;">Enter reference: <strong>DONATION</strong></p>
+                            </div>
+                        </div>
+                        
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;"><i class="fas fa-info-circle" style="color: #1a5276;"></i> Transaction fees may apply based on the amount sent.</p>
+                    </div>
+                    
+                    <button class="cta-button" onclick="closeMobileModal()" style="width: 100%;">
+                        <i class="fas fa-check"></i> GOT IT
+                    </button>
+                `;
+            } else if (provider === 'airtel') {
+                html = `
+                    <h3 style="color: #1a5276; margin-bottom: 1.5rem; border-bottom: 2px solid #E20074; padding-bottom: 0.5rem;">Airtel Money Instructions</h3>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <p style="color: #666; margin-bottom: 1rem;">Follow these steps to donate via Airtel Money:</p>
+                        
+                        <div style="background-color: #f9f9f9; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="width: 30px; height: 30px; background-color: #E20074; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">1</div>
+                                <p style="margin: 0;">Go to your Airtel Money menu</p>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="width: 30px; height: 30px; background-color: #E20074; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">2</div>
+                                <p style="margin: 0;">Select "Send Money"</p>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="width: 30px; height: 30px; background-color: #E20074; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">3</div>
+                                <p style="margin: 0;">Enter phone number: <strong>+256 752 891204</strong></p>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="width: 30px; height: 30px; background-color: #E20074; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">4</div>
+                                <p style="margin: 0;">Enter the amount you wish to donate</p>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="width: 30px; height: 30px; background-color: #E20074; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">5</div>
+                                <p style="margin: 0;">Enter reference: <strong>DONATION</strong></p>
+                            </div>
+                        </div>
+                        
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;"><i class="fas fa-info-circle" style="color: #1a5276;"></i> Transaction fees may apply based on the amount sent.</p>
+                    </div>
+                    
+                    <button class="cta-button" onclick="closeMobileModal()" style="width: 100%; background-color: #E20074;">
+                        <i class="fas fa-check"></i> GOT IT
+                    </button>
+                `;
+            }
+            
+            content.innerHTML = html;
+            modal.style.display = 'flex';
+        }
+        
+        // Close mobile modal
+        function closeMobileModal() {
+            document.getElementById('mobileModal').style.display = 'none';
+        }
+        
+        // Confirmation form submission
+        document.getElementById('confirmationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('donorName').value;
+            const email = document.getElementById('donorEmail').value;
+            const amount = document.getElementById('donationAmount').value;
+            const currency = document.getElementById('donationCurrency').value;
+            const date = document.getElementById('transferDate').value;
+            const type = document.getElementById('donationType').value;
+            
+            // Validation
+            if (!name || !email || !amount || !currency || !date) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitButton = document.querySelector('#confirmationForm .submit-button');
+            const originalText = submitButton.innerHTML;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SENDING...';
+            submitButton.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Show success message
+                alert(`Thank you ${name}! Your donation confirmation has been received. A receipt will be sent to ${email} within 24-48 hours.`);
+                
+                // Reset form
+                document.getElementById('confirmationForm').reset();
+                document.getElementById('transferDate').valueAsDate = new Date();
+                
+                // Reset button
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            }, 2000);
+        });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe sections for animation
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Observe specific elements
+        document.querySelectorAll('#transferContainer, .mobile-option').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a, .footer-column a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href').includes('#')) {
+                    e.preventDefault();
+                    
+                    const href = this.getAttribute('href');
+                    if (href.includes('index.html')) {
+                        // Redirect to index.html with hash
+                        window.location.href = href;
+                    }
+                }
+            });
+        });
+        
+        // Close modal when clicking outside
+        document.getElementById('mobileModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeMobileModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMobileModal();
+            }
+        });
+    </script>
+</body>
+</html>

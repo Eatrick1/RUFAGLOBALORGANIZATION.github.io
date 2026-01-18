@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Now - RUFA GLOBAL ORGANIZATION</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Flutterwave Payment Integration -->
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: #1a5276;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ffcc00, #ffd633);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #1a5276;
+            animation: pulse 2s infinite alternate;
+            box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3); }
+            100% { transform: scale(1.05); box-shadow: 0 6px 18px rgba(255, 204, 0, 0.5); }
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .logo span {
+            color: #ffcc00;
+        }
+        
+        .org-tagline {
+            font-size: 0.9rem;
+            color: #ffcc00;
+            font-style: italic;
+            margin-top: 0.2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ffcc00;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(26, 82, 118, 0.9), rgba(26, 82, 118, 0.95)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2011&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 204, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 20%, rgba(26, 82, 118, 0.1) 0%, transparent 50%);
+            animation: float 20s infinite ease-in-out alternate;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-20px, 20px) scale(1.05); }
+            100% { transform: translate(10px, -10px) scale(1); }
+        }
+        
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page-subtitle {
+            font-size: 1.8rem;
+            color: #ffcc00;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+        
+        .page-description {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+        
+        /* Section Styling */
+        .section {
+            padding: 5rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a5276;
+            margin-bottom: 3rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .section-title.animate {
+            animation-delay: 0.3s;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background-color: #ffcc00;
+            margin: 0.5rem auto 2rem;
+            transform: scaleX(0);
+            transform-origin: center;
+            animation: expand 0.8s ease-out 0.5s forwards;
+        }
+
+        @keyframes expand {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+        
+        /* Payment Methods Section */
+        .payment-methods {
+            background-color: #f0f7ff;
+        }
+        
+        .methods-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .method-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .method-tab {
+            padding: 1.2rem 2.5rem;
+            background-color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .method-tab:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .method-tab.active {
+            background-color: #1a5276;
+            color: white;
+        }
+        
+        .method-tab i {
+            font-size: 1.3rem;
+        }
+        
+        .method-content {
+            display: none;
+            background-color: white;
+            border-radius: 10px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .method-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        /* Card Payment Form */
+        .card-payment-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-title {
+            color: #1a5276;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1a5276;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #1a5276;
+            box-shadow: 0 0 0 2px rgba(26, 82, 118, 0.2);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .amount-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .amount-option {
+            flex: 1;
+            min-width: 100px;
+        }
+        
+        .amount-button {
+            width: 100%;
+            padding: 1rem;
+            background-color: white;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a5276;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .amount-button:hover {
+            border-color: #1a5276;
+        }
+        
+        .amount-button.selected {
+            background-color: #1a5276;
+            color: white;
+            border-color: #1a5276;
+        }
+        
+        .custom-amount {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .currency-symbol {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a5276;
+        }
+        
+        /* Mobile Money Form */
+        .mobile-money-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .provider-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .provider-button {
+            flex: 1;
+            padding: 1.5rem;
+            background-color: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .provider-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .provider-button.selected {
+            border-color: #ffcc00;
+        }
+        
+        .mtn-button.selected {
+            border-color: #ffcc00;
+            background-color: rgba(255, 204, 0, 0.1);
+        }
+        
+        .airtel-button.selected {
+            border-color: #E20074;
+            background-color: rgba(226, 0, 116, 0.1);
+        }
+        
+        .provider-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .mtn-icon {
+            color: #ffcc00;
+        }
+        
+        .airtel-icon {
+            color: #E20074;
+        }
+        
+        .provider-button h4 {
+            color: #1a5276;
+            margin-bottom: 0.3rem;
+        }
+        
+        /* Payment Security */
+        .payment-security {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .security-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .security-icon {
+            font-size: 2rem;
+            color: #1a5276;
+        }
+        
+        .security-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background-color: #ffcc00;
+            color: #1a5276;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            background-color: #ffd633;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        .cta-button i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Bank Transfer Option */
+        .bank-transfer-option {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .bank-info-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .bank-info-card h3 {
+            color: #1a5276;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .bank-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .bank-detail {
+            margin-bottom: 1rem;
+        }
+        
+        .bank-label {
+            display: block;
+            font-weight: 600;
+            color: #1a5276;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+        }
+        
+        .bank-value {
+            display: block;
+            font-size: 1.1rem;
+            color: #333;
+            padding: 0.8rem;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        /* Payment Status Modal */
+        .payment-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .modal-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .success-icon {
+            color: #4CAF50;
+        }
+        
+        .error-icon {
+            color: #f44336;
+        }
+        
+        .processing-icon {
+            color: #ffcc00;
+        }
+        
+        .modal-content h3 {
+            color: #1a5276;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .modal-content p {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #666;
+            cursor: pointer;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0d3c5c;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h4 {
+            color: #ffcc00;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-column p {
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: #ffcc00;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .page-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .method-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .method-tab {
+                width: 100%;
+                max-width: 400px;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 1rem;
+            }
+            
+            .page-header {
+                padding: 4rem 1rem;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .method-content {
+                padding: 2rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .provider-buttons {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .method-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo-container">
+                    <div class="logo-img">RGO</div>
+                    <div class="logo-text">
+                        <div class="logo">RUFA GLOBAL ORGANIZATION</div>
+                        <div class="org-tagline">TO RAISE THE FUTURE GENERATION</div>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="donation.html" class="active">Donate</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Make a Secure Donation</h1>
+            <div class="page-subtitle">Support Our Mission in Uganda</div>
+            <p class="page-description">
+                Choose your preferred payment method to support our education, healthcare, and empowerment programs. Every donation makes a difference.
+            </p>
+        </div>
+    </section>
+
+    <!-- Payment Methods Section -->
+    <section class="section payment-methods">
+        <div class="container">
+            <h2 class="section-title animate">Choose Payment Method</h2>
+            
+            <div class="methods-container">
+                <div class="method-tabs">
+                    <button class="method-tab active" onclick="openMethod('card')">
+                        <i class="fas fa-credit-card"></i> Credit/Debit Card
+                    </button>
+                    <button class="method-tab" onclick="openMethod('mobile')">
+                        <i class="fas fa-mobile-alt"></i> Mobile Money
+                    </button>
+                    <button class="method-tab" onclick="openMethod('bank')">
+                        <i class="fas fa-university"></i> Bank Transfer
+                    </button>
+                </div>
+                
+                <!-- Card Payment Method -->
+                <div id="card" class="method-content active">
+                    <div class="card-payment-form">
+                        <h3 class="form-title">Pay with Card</h3>
+                        
+                        <form id="cardPaymentForm">
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="donationAmount">Donation Amount (USD)</label>
+                                <div class="amount-options">
+                                    <div class="amount-option">
+                                        <button type="button" class="amount-button" data-amount="25" onclick="selectAmount(25)">$25</button>
+                                    </div>
+                                    <div class="amount-option">
+                                        <button type="button" class="amount-button" data-amount="50" onclick="selectAmount(50)">$50</button>
+                                    </div>
+                                    <div class="amount-option">
+                                        <button type="button" class="amount-button" data-amount="100" onclick="selectAmount(100)">$100</button>
+                                    </div>
+                                    <div class="amount-option">
+                                        <button type="button" class="amount-button" data-amount="250" onclick="selectAmount(250)">$250</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="custom-amount">
+                                    <span class="currency-symbol">$</span>
+                                    <input type="number" id="customAmount" class="form-control" placeholder="Other amount" min="1" oninput="selectCustomAmount()">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="donationType">Donation Purpose</label>
+                                <select id="donationType" class="form-control">
+                                    <option value="general">General Fund (Where Most Needed)</option>
+                                    <option value="education">Education Program</option>
+                                    <option value="healthcare">Healthcare Program</option>
+                                    <option value="women">Women Empowerment</option>
+                                </select>
+                            </div>
+                            
+                            <div class="payment-security">
+                                <div class="security-icons">
+                                    <i class="fas fa-shield-alt security-icon"></i>
+                                    <i class="fas fa-lock security-icon"></i>
+                                    <i class="fas fa-check-circle security-icon"></i>
+                                </div>
+                                <p class="security-text">Your payment is secure and encrypted. We never store your card details.</p>
+                            </div>
+                            
+                            <button type="button" class="cta-button" onclick="processCardPayment()">
+                                <i class="fas fa-lock"></i> PAY NOW WITH CARD
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Mobile Money Method -->
+                <div id="mobile" class="method-content">
+                    <div class="mobile-money-form">
+                        <h3 class="form-title">Pay with Mobile Money</h3>
+                        
+                        <div class="provider-buttons">
+                            <div class="provider-button mtn-button" onclick="selectProvider('mtn')">
+                                <div class="provider-icon mtn-icon">
+                                    <i class="fas fa-sim-card"></i>
+                                </div>
+                                <h4>MTN Mobile Money</h4>
+                                <p>Uganda, Rwanda, Ghana</p>
+                            </div>
+                            
+                            <div class="provider-button airtel-button selected" onclick="selectProvider('airtel')">
+                                <div class="provider-icon airtel-icon">
+                                    <i class="fas fa-sim-card"></i>
+                                </div>
+                                <h4>Airtel Money</h4>
+                                <p>Uganda, Kenya, Tanzania</p>
+                            </div>
+                        </div>
+                        
+                        <form id="mobilePaymentForm">
+                            <div class="form-group">
+                                <label for="mobileNumber">Your Mobile Number</label>
+                                <input type="tel" id="mobileNumber" class="form-control" placeholder="+256 XXX XXX XXX" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="mobileAmount">Donation Amount (UGX)</label>
+                                <div class="amount-options">
+                                    <div class="amount-option">
+                                        <button type="button" class="amount-button" data-amount="10000" onclick="selectMobileAmount(10000)">10,000 UGX</button>
+                                    </div>
+                                    <div class="amount-option">
+                                        <button type="button" class="amount-button" data-amount="25000" onclick="selectMobileAmount(25000)">25,000 UGX</button>
+                                    </div>
+                                    <div class="amount-option">
+                                        <button type="button" class="amount-button" data-amount="50000" onclick="selectMobileAmount(50000)">50,000 UGX</button>
+                                    </div>
+                                    <div class="amount-option">
+                                        <button type="button" class="amount-button" data-amount="100000" onclick="selectMobileAmount(100000)">100,000 UGX</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="custom-amount">
+                                    <span class="currency-symbol">UGX</span>
+                                    <input type="number" id="mobileCustomAmount" class="form-control" placeholder="Other amount" min="1000" oninput="selectMobileCustomAmount()">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="mobileEmail">Email Address (Optional)</label>
+                                <input type="email" id="mobileEmail" class="form-control" placeholder="For receipt">
+                            </div>
+                            
+                            <div class="payment-security">
+                                <p class="security-text">You will receive a payment prompt on your phone to complete the transaction.</p>
+                            </div>
+                            
+                            <button type="button" class="cta-button" onclick="processMobilePayment()">
+                                <i class="fas fa-mobile-alt"></i> PAY WITH MOBILE MONEY
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Bank Transfer Method -->
+                <div id="bank" class="method-content">
+                    <div class="bank-transfer-option">
+                        <h3 class="form-title">Direct Bank Transfer</h3>
+                        
+                        <div class="bank-info-card">
+                            <h3><i class="fas fa-university"></i> Bank Account Details</h3>
+                            <div class="bank-details-grid">
+                                <div class="bank-detail">
+                                    <span class="bank-label">Bank Name</span>
+                                    <span class="bank-value">Stanbic Bank Uganda Limited</span>
+                                </div>
+                                
+                                <div class="bank-detail">
+                                    <span class="bank-label">Account Name</span>
+                                    <span class="bank-value">RUFA GLOBAL ORGANIZATION</span>
+                                </div>
+                                
+                                <div class="bank-detail">
+                                    <span class="bank-label">Account Number (USD)</span>
+                                    <span class="bank-value">903000598757</span>
+                                </div>
+                                
+                                <div class="bank-detail">
+                                    <span class="bank-label">Account Number (UGX)</span>
+                                    <span class="bank-value">903000598756</span>
+                                </div>
+                                
+                                <div class="bank-detail">
+                                    <span class="bank-label">Swift Code</span>
+                                    <span class="bank-value">SBICUGKX</span>
+                                </div>
+                                
+                                <div class="bank-detail">
+                                    <span class="bank-label">Branch</span>
+                                    <span class="bank-value">Kampala Road Branch</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <p style="color: #666; margin-bottom: 1.5rem;">After making your bank transfer, please notify us so we can send you a receipt.</p>
+                            <button class="cta-button" onclick="openMethod('card')" style="max-width: 300px; margin: 0 auto;">
+                                <i class="fas fa-credit-card"></i> OR PAY WITH CARD INSTEAD
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Status Modal -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closePaymentModal()">×</button>
+            
+            <div id="modalIcon" class="modal-icon processing-icon">
+                <i class="fas fa-spinner fa-spin"></i>
+            </div>
+            
+            <h3 id="modalTitle">Processing Payment</h3>
+            <p id="modalMessage">Please wait while we process your donation...</p>
+            
+            <div id="modalActions" style="display: none;">
+                <button class="cta-button" onclick="closePaymentModal()" style="max-width: 200px; margin: 0 auto;">
+                    <i class="fas fa-check"></i> CONTINUE
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <div class="logo-container" style="margin-bottom: 1rem;">
+                        <div class="logo-img" style="width: 50px; height: 50px; font-size: 1.5rem;">RGO</div>
+                        <div class="logo-text">
+                            <div class="logo" style="font-size: 1.5rem;">RUFA GLOBAL</div>
+                            <div class="org-tagline" style="font-size: 0.8rem;">TO RAISE THE FUTURE GENERATION</div>
+                        </div>
+                    </div>
+                    <p>Your secure donation supports education, healthcare, and empowerment programs across Uganda.</p>
+                    <p>Let's Make Change Together.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Payment Information</h4>
+                    <p><i class="fas fa-shield-alt"></i> 100% Secure Payments</p>
+                    <p><i class="fas fa-receipt"></i> Instant Receipts</p>
+                    <p><i class="fas fa-lock"></i> Encrypted Transactions</p>
+                    <p><i class="fas fa-hand-holding-heart"></i> 100% to Programs</p>
+                    <p><i class="fas fa-file-invoice-dollar"></i> Tax-Deductible</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="programs.html">Programs</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="donation.html">Donate</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <p><i class="fas fa-phone"></i> +256 772 342831</p>
+                    <p><i class="fas fa-envelope"></i> donations@rufaglobal.org</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 5:00 PM</p>
+                    <p><i class="fas fa-question-circle"></i> Payment Issues?</p>
+                    <p><i class="fas fa-file-alt"></i> Tax ID: 123-456-789</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2018-<span id="currentYear"></span> RUFA GLOBAL ORGANIZATION. All rights reserved. | To Raise The Future Generation</p>
+                <p style="margin-top: 0.5rem;">Registered Non-Profit Organization in Uganda | All donations are tax-deductible</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Display current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Global variables
+        let selectedAmount = 0;
+        let selectedMobileAmount = 0;
+        let selectedProvider = 'airtel';
+        
+        // Payment method tabs
+        function openMethod(method) {
+            // Hide all method contents
+            document.querySelectorAll('.method-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all method tabs
+            document.querySelectorAll('.method-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show the selected method content
+            document.getElementById(method).classList.add('active');
+            
+            // Activate the clicked tab
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Select amount for card payment
+        function selectAmount(amount) {
+            selectedAmount = amount;
+            
+            // Update buttons
+            document.querySelectorAll('#cardPaymentForm .amount-button').forEach(button => {
+                button.classList.remove('selected');
+                if (parseInt(button.getAttribute('data-amount')) === amount) {
+                    button.classList.add('selected');
+                }
+            });
+            
+            // Clear custom amount
+            document.getElementById('customAmount').value = '';
+        }
+        
+        // Select custom amount for card
+        function selectCustomAmount() {
+            const customAmount = document.getElementById('customAmount').value;
+            if (customAmount) {
+                selectedAmount = parseInt(customAmount);
+                
+                // Clear selected buttons
+                document.querySelectorAll('#cardPaymentForm .amount-button').forEach(button => {
+                    button.classList.remove('selected');
+                });
+            }
+        }
+        
+        // Select mobile money provider
+        function selectProvider(provider) {
+            selectedProvider = provider;
+            
+            // Update provider buttons
+            document.querySelectorAll('.provider-button').forEach(button => {
+                button.classList.remove('selected');
+            });
+            
+            if (provider === 'mtn') {
+                document.querySelector('.mtn-button').classList.add('selected');
+            } else {
+                document.querySelector('.airtel-button').classList.add('selected');
+            }
+        }
+        
+        // Select amount for mobile money
+        function selectMobileAmount(amount) {
+            selectedMobileAmount = amount;
+            
+            // Update buttons
+            document.querySelectorAll('#mobilePaymentForm .amount-button').forEach(button => {
+                button.classList.remove('selected');
+                if (parseInt(button.getAttribute('data-amount')) === amount) {
+                    button.classList.add('selected');
+                }
+            });
+            
+            // Clear custom amount
+            document.getElementById('mobileCustomAmount').value = '';
+        }
+        
+        // Select custom amount for mobile
+        function selectMobileCustomAmount() {
+            const customAmount = document.getElementById('mobileCustomAmount').value;
+            if (customAmount) {
+                selectedMobileAmount = parseInt(customAmount);
+                
+                // Clear selected buttons
+                document.querySelectorAll('#mobilePaymentForm .amount-button').forEach(button => {
+                    button.classList.remove('selected');
+                });
+            }
+        }
+        
+        // Show payment modal
+        function showPaymentModal(title, message, type = 'processing') {
+            const modal = document.getElementById('paymentModal');
+            const modalIcon = document.getElementById('modalIcon');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalMessage = document.getElementById('modalMessage');
+            const modalActions = document.getElementById('modalActions');
+            
+            // Set content based on type
+            modalTitle.textContent = title;
+            modalMessage.textContent = message;
+            
+            // Set icon based on type
+            modalIcon.className = 'modal-icon';
+            if (type === 'success') {
+                modalIcon.classList.add('success-icon');
+                modalIcon.innerHTML = '<i class="fas fa-check-circle"></i>';
+                modalActions.style.display = 'block';
+            } else if (type === 'error') {
+                modalIcon.classList.add('error-icon');
+                modalIcon.innerHTML = '<i class="fas fa-times-circle"></i>';
+                modalActions.style.display = 'block';
+            } else {
+                modalIcon.classList.add('processing-icon');
+                modalIcon.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                modalActions.style.display = 'none';
+            }
+            
+            // Show modal
+            modal.style.display = 'flex';
+        }
+        
+        // Close payment modal
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+        
+        // Process card payment using Flutterwave
+        function processCardPayment() {
+            // Get form values
+            const name = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const amount = selectedAmount || document.getElementById('customAmount').value;
+            const donationType = document.getElementById('donationType').value;
+            
+            // Validation
+            if (!name || !email || !phone || !amount) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            if (!selectedAmount && (!document.getElementById('customAmount').value || document.getElementById('customAmount').value < 1)) {
+                alert('Please select or enter a donation amount.');
+                return;
+            }
+            
+            // Show processing modal
+            showPaymentModal('Processing Payment', 'Redirecting to secure payment gateway...');
+            
+            // Generate unique transaction reference
+            const txRef = 'RGO-' + Date.now() + '-' + Math.floor(Math.random() * 1000);
+            
+            // Flutterwave payment configuration
+            const paymentData = {
+                public_key: 'FLWPUBK_TEST-YOUR-PUBLIC-KEY-HERE', // Replace with your Flutterwave public key
+                tx_ref: txRef,
+                amount: amount,
+                currency: 'USD',
+                payment_options: 'card, banktransfer, ussd',
+                redirect_url: 'https://yourwebsite.com/payment-success.html', // Replace with your success page
+                customer: {
+                    email: email,
+                    phone_number: phone,
+                    name: name
+                },
+                customizations: {
+                    title: 'RUFA Global Organization',
+                    description: `Donation to ${donationType} program`,
+                    logo: 'https://yourwebsite.com/logo.png' // Replace with your logo
+                },
+                meta: {
+                    donation_type: donationType,
+                    organization: 'RUFA Global'
+                }
+            };
+            
+            // Initialize Flutterwave payment
+            FlutterwaveCheckout(paymentData);
+        }
+        
+        // Process mobile money payment
+        function processMobilePayment() {
+            // Get form values
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            const amount = selectedMobileAmount || document.getElementById('mobileCustomAmount').value;
+            const email = document.getElementById('mobileEmail').value;
+            
+            // Validation
+            if (!mobileNumber || !amount) {
+                alert('Please enter your mobile number and donation amount.');
+                return;
+            }
+            
+            if (!selectedMobileAmount && (!document.getElementById('mobileCustomAmount').value || document.getElementById('mobileCustomAmount').value < 1000)) {
+                alert('Please enter a donation amount (minimum 1,000 UGX).');
+                return;
+            }
+            
+            // Show processing modal
+            showPaymentModal('Processing Mobile Money', 'Initiating mobile money payment...');
+            
+            // Generate unique transaction reference
+            const txRef = 'RGO-MOBILE-' + Date.now();
+            
+            // Prepare mobile money payment data
+            const paymentData = {
+                tx_ref: txRef,
+                amount: amount,
+                currency: 'UGX',
+                country: 'UG',
+                email: email || 'donor@rufaglobal.org',
+                phone_number: mobileNumber.replace('+', ''),
+                network: selectedProvider === 'mtn' ? 'MTN' : 'AIRTEL',
+                fullname: 'RUFA Global Donor',
+                redirect_url: 'https://yourwebsite.com/payment-success.html',
+                meta: {
+                    donation_type: 'mobile_money',
+                    provider: selectedProvider
+                }
+            };
+            
+            // Simulate mobile money payment (in production, use Flutterwave mobile money API)
+            setTimeout(() => {
+                // Show success message
+                showPaymentModal(
+                    'Payment Request Sent!',
+                    `A payment request has been sent to ${mobileNumber}. Please check your phone and approve the payment to complete your donation.`,
+                    'success'
+                );
+                
+                // In production, you would:
+                // 1. Call Flutterwave mobile money API
+                // 2. Handle webhook for payment confirmation
+                // 3. Send receipt via email
+            }, 2000);
+        }
+        
+        // Simulate webhook response (for demo purposes)
+        function simulateWebhookSuccess() {
+            showPaymentModal(
+                'Donation Successful!',
+                'Thank you for your donation! A receipt has been sent to your email. Your support helps transform lives in Uganda.',
+                'success'
+            );
+        }
+        
+        // Simulate webhook failure (for demo purposes)
+        function simulateWebhookFailure() {
+            showPaymentModal(
+                'Payment Failed',
+                'There was an issue processing your payment. Please try again or contact support if the problem persists.',
+                'error'
+            );
+        }
+        
+        // Form validation for mobile number
+        document.getElementById('mobileNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            // Add country code if not present
+            if (!value.startsWith('256')) {
+                value = '256' + value;
+            }
+            
+            // Format as +256 XXX XXX XXX
+            if (value.length > 3) {
+                value = '+' + value.substring(0, 3) + ' ' + value.substring(3, 6) + ' ' + value.substring(6, 9) + ' ' + value.substring(9, 12);
+            }
+            
+            e.target.value = value.substring(0, 15);
+        });
+        
+        // Form validation for card amount
+        document.getElementById('customAmount').addEventListener('input', function(e) {
+            if (e.target.value < 1) {
+                e.target.value = 1;
+            }
+        });
+        
+        // Form validation for mobile amount
+        document.getElementById('mobileCustomAmount').addEventListener('input', function(e) {
+            if (e.target.value < 1000) {
+                e.target.value = 1000;
+            }
+        });
+        
+        // Initialize with default values
+        selectAmount(50); // Default card amount
+        selectMobileAmount(25000); // Default mobile amount
+        selectProvider('airtel'); // Default provider
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe sections for animation
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Close modal when clicking outside
+        document.getElementById('paymentModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePaymentModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closePaymentModal();
+            }
+        });
+        
+        // Demo payment simulation
+        function simulatePayment() {
+            showPaymentModal('Processing Payment', 'Connecting to payment gateway...');
+            
+            setTimeout(() => {
+                simulateWebhookSuccess();
+            }, 3000);
+        }
+        
+        // Demo data for testing
+        function fillDemoData() {
+            document.getElementById('fullName').value = 'John Doe';
+            document.getElementById('email').value = 'john@example.com';
+            document.getElementById('phone').value = '+256 712 345 678';
+            selectAmount(100);
+            
+            document.getElementById('mobileNumber').value = '+256 712 345 678';
+            document.getElementById('mobileEmail').value = 'john@example.com';
+            selectMobileAmount(50000);
+        }
+        
+        // Uncomment for testing
+        // fillDemoData();
+    </script>
+</body>
+</html>

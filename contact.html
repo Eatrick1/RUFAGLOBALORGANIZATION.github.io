@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - RUFA GLOBAL ORGANIZATION</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: #1a5276;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ffcc00, #ffd633);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #1a5276;
+            animation: pulse 2s infinite alternate;
+            box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3); }
+            100% { transform: scale(1.05); box-shadow: 0 6px 18px rgba(255, 204, 0, 0.5); }
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .logo span {
+            color: #ffcc00;
+        }
+        
+        .org-tagline {
+            font-size: 0.9rem;
+            color: #ffcc00;
+            font-style: italic;
+            margin-top: 0.2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ffcc00;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(26, 82, 118, 0.9), rgba(26, 82, 118, 0.95)), url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 204, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 20%, rgba(26, 82, 118, 0.1) 0%, transparent 50%);
+            animation: float 20s infinite ease-in-out alternate;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-20px, 20px) scale(1.05); }
+            100% { transform: translate(10px, -10px) scale(1); }
+        }
+        
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page-subtitle {
+            font-size: 1.8rem;
+            color: #ffcc00;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+        
+        .page-description {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+        
+        /* Section Styling */
+        .section {
+            padding: 5rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a5276;
+            margin-bottom: 3rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .section-title.animate {
+            animation-delay: 0.3s;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background-color: #ffcc00;
+            margin: 0.5rem auto 2rem;
+            transform: scaleX(0);
+            transform-origin: center;
+            animation: expand 0.8s ease-out 0.5s forwards;
+        }
+
+        @keyframes expand {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+        
+        /* Contact Content */
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-form-container {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        /* Contact Cards */
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .contact-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #1a5276;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1);
+            background-color: #ffcc00;
+        }
+        
+        .contact-card h3 {
+            color: #1a5276;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .contact-card p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-link {
+            display: inline-block;
+            color: #1a5276;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: #ffcc00;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .contact-form.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .form-title {
+            color: #1a5276;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .contact-form.visible .form-group {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .contact-form.visible .form-group:nth-child(1) { transition-delay: 0.1s; }
+        .contact-form.visible .form-group:nth-child(2) { transition-delay: 0.2s; }
+        .contact-form.visible .form-group:nth-child(3) { transition-delay: 0.3s; }
+        .contact-form.visible .form-group:nth-child(4) { transition-delay: 0.4s; }
+        .contact-form.visible .form-group:nth-child(5) { transition-delay: 0.5s; }
+        .contact-form.visible .submit-button { transition-delay: 0.6s; }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1a5276;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #1a5276;
+            box-shadow: 0 0 0 2px rgba(26, 82, 118, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            background-color: #1a5276;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            margin-top: 1rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s, transform 0.5s, background-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-button:hover::before {
+            left: 100%;
+        }
+        
+        .submit-button:hover {
+            background-color: #2c7bb6;
+        }
+        
+        /* Office Hours */
+        .office-hours {
+            background-color: #f0f7ff;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .office-hours.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .office-hours h3 {
+            color: #1a5276;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .hour-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .day {
+            font-weight: 600;
+            color: #1a5276;
+        }
+        
+        .time {
+            color: #666;
+        }
+        
+        /* Location Map */
+        .location-section {
+            background-color: #f0f7ff;
+        }
+        
+        .location-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .location-map {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .location-map.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .location-map iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            display: block;
+        }
+        
+        .location-details {
+            flex: 1;
+            min-width: 300px;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .location-details.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .location-details h3 {
+            color: #1a5276;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        
+        .location-details p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            font-size: 1.1rem;
+        }
+        
+        .location-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .feature-icon {
+            background-color: #1a5276;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .feature-text h4 {
+            color: #1a5276;
+            margin-bottom: 0.3rem;
+        }
+        
+        .feature-text p {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            background-color: white;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: white;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .faq-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            background-color: #f0f7ff;
+            color: #1a5276;
+            font-weight: 600;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        .faq-question:hover {
+            background-color: #e1eef9;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+        
+        .faq-answer p {
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        
+        .faq-answer ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .faq-answer li {
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background-color: #ffcc00;
+            color: #1a5276;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            background-color: #ffd633;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        .cta-button i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Emergency Contact */
+        .emergency-contact {
+            background-color: #1a5276;
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .emergency-contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 204, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 20%, rgba(26, 82, 118, 0.1) 0%, transparent 50%);
+        }
+        
+        .emergency-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .emergency-text {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .emergency-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffcc00;
+            margin: 1rem 0;
+            display: block;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0d3c5c;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h4 {
+            color: #ffcc00;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-column p {
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: #ffcc00;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .page-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 1rem;
+            }
+            
+            .page-header {
+                padding: 4rem 1rem;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .location-map iframe {
+                height: 300px;
+            }
+            
+            .emergency-number {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .contact-form {
+                padding: 1.5rem;
+            }
+            
+            .emergency-number {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo-container">
+                    <div class="logo-img">RGO</div>
+                    <div class="logo-text">
+                        <div class="logo">RUFA GLOBAL ORGANIZATION</div>
+                        <div class="org-tagline">TO RAISE THE FUTURE GENERATION</div>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="contact.html" class="active">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Contact Us</h1>
+            <div class="page-subtitle">Get in Touch With RUFA Global</div>
+            <p class="page-description">
+                We're here to answer your questions, discuss partnerships, and provide information about our programs. Reach out to us through any of the channels below.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title animate">Get In Touch</h2>
+            
+            <div class="contact-cards" id="contactCards">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Visit Our Office</h3>
+                    <p>Kalema Road, Lungujja Kitunzi</p>
+                    <p>Kampala, Uganda</p>
+                    <a href="#location" class="contact-link">VIEW ON MAP →</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p>Main Office: +256 772 342831</p>
+                    <p>Programs: +256 752 891204</p>
+                    <a href="tel:+256772342831" class="contact-link">CALL NOW →</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p>General Inquiries: info@rufaglobal.org</p>
+                    <p>Programs: programs@rufaglobal.org</p>
+                    <a href="mailto:info@rufaglobal.org" class="contact-link">SEND EMAIL →</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Office Hours</h3>
+                    <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                    <p>Saturday - Sunday: Closed</p>
+                    <a href="#hours" class="contact-link">VIEW HOURS →</a>
+                </div>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-form" id="contactForm">
+                        <h3 class="form-title">Send Us a Message</h3>
+                        <form id="inquiryForm">
+                            <div class="form-group">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" class="form-control" placeholder="Your Full Name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" class="form-control" placeholder="Your Email Address" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="Your Phone Number">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <select id="subject" class="form-control" required>
+                                    <option value="" disabled selected>Select Inquiry Type</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="donation">Donation Inquiry</option>
+                                    <option value="volunteer">Volunteer Opportunity</option>
+                                    <option value="partnership">Partnership Proposal</option>
+                                    <option value="program">Program Information</option>
+                                    <option value="media">Media Inquiry</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" class="form-control" placeholder="Your Message Here..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-button">SEND MESSAGE</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <div class="office-hours" id="hours">
+                        <h3>Office Hours</h3>
+                        <div class="hours-grid">
+                            <div class="hour-item">
+                                <span class="day">Monday</span>
+                                <span class="time">8:00 AM - 5:00 PM</span>
+                            </div>
+                            <div class="hour-item">
+                                <span class="day">Tuesday</span>
+                                <span class="time">8:00 AM - 5:00 PM</span>
+                            </div>
+                            <div class="hour-item">
+                                <span class="day">Wednesday</span>
+                                <span class="time">8:00 AM - 5:00 PM</span>
+                            </div>
+                            <div class="hour-item">
+                                <span class="day">Thursday</span>
+                                <span class="time">8:00 AM - 5:00 PM</span>
+                            </div>
+                            <div class="hour-item">
+                                <span class="day">Friday</span>
+                                <span class="time">8:00 AM - 5:00 PM</span>
+                            </div>
+                            <div class="hour-item">
+                                <span class="day">Saturday</span>
+                                <span class="time">Closed</span>
+                            </div>
+                            <div class="hour-item">
+                                <span class="day">Sunday</span>
+                                <span class="time">Closed</span>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 2rem; padding: 1.5rem; background-color: #ffcc00; border-radius: 8px;">
+                            <h4 style="color: #1a5276; margin-bottom: 0.5rem;">Urgent Inquiries</h4>
+                            <p style="color: #1a5276; margin-bottom: 0.5rem;">For urgent matters outside office hours, please call our emergency line:</p>
+                            <p style="font-size: 1.3rem; font-weight: 700; color: #1a5276;">+256 772 342831</p>
+                        </div>
+                    </div>
+                    
+                    <div class="office-hours" style="margin-top: 2rem;">
+                        <h3>Social Media</h3>
+                        <p style="margin-bottom: 1.5rem; color: #555;">Connect with us on social media for the latest updates:</p>
+                        
+                        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                            <a href="#" style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: #1a5276; color: white; border-radius: 50%; text-decoration: none; transition: transform 0.3s, background-color 0.3s;">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: #1a5276; color: white; border-radius: 50%; text-decoration: none; transition: transform 0.3s, background-color 0.3s;">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: #1a5276; color: white; border-radius: 50%; text-decoration: none; transition: transform 0.3s, background-color 0.3s;">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: #1a5276; color: white; border-radius: 50%; text-decoration: none; transition: transform 0.3s, background-color 0.3s;">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="#" style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: #1a5276; color: white; border-radius: 50%; text-decoration: none; transition: transform 0.3s, background-color 0.3s;">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                        
+                        <p style="margin-top: 1.5rem; color: #555; font-size: 0.9rem;">
+                            Follow us for updates on our programs, success stories, and opportunities to get involved.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="section location-section" id="location">
+        <div class="container">
+            <h2 class="section-title animate">Our Location</h2>
+            
+            <div class="location-content">
+                <div class="location-map">
+                    <!-- Embedded Google Map (placeholder - replace with actual embed code) -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15959.112667229414!2d32.57208324458008!3d0.3134999999999976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb6c60929a81%3A0xbc9e7e2d77e8d09f!2sLungujja%2C%20Kampala%2C%20Uganda!5e0!3m2!1sen!2s!4v1682426789012!5m2!1sen!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                
+                <div class="location-details">
+                    <h3>RUFA Global Headquarters</h3>
+                    <p>Our main office is located in Kampala, Uganda, serving as the central hub for all our operations across the country. We welcome visitors, partners, and volunteers to our office during regular business hours.</p>
+                    
+                    <div class="location-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-map-pin"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Address</h4>
+                                <p>Kalema Road, Lungujja Kitunzi, Kampala, Uganda</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Parking</h4>
+                                <p>Free parking available for visitors</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-wheelchair"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Accessibility</h4>
+                                <p>Wheelchair accessible facility</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-bus"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Public Transport</h4>
+                                <p>Easily accessible by bus and taxi</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 2rem;">
+                        <a href="https://goo.gl/maps/example" target="_blank" class="cta-button">GET DIRECTIONS <i class="fas fa-directions"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section">
+        <div class="container">
+            <h2 class="section-title animate">Frequently Asked Questions</h2>
+            
+            <div class="faq-container" id="faqContainer">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How can I donate to RUFA Global Organization?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can donate to RUFA Global through several methods:</p>
+                        <ul>
+                            <li><strong>Online:</strong> Use our secure donation form on the <a href="index.html#donate">Donate page</a></li>
+                            <li><strong>Bank Transfer:</strong> Send funds to our bank account (details available upon request)</li>
+                            <li><strong>Mobile Money:</strong> Use +256 772 342831 for mobile money donations</li>
+                            <li><strong>In-Person:</strong> Visit our office to make a donation directly</li>
+                        </ul>
+                        <p>All donations are tax-deductible and you will receive a receipt for your records.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How can I volunteer with your organization?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We welcome volunteers in various capacities:</p>
+                        <ul>
+                            <li><strong>Field Volunteers:</strong> Assist with our programs in communities across Uganda</li>
+                            <li><strong>Office Volunteers:</strong> Help with administrative tasks at our headquarters</li>
+                            <li><strong>Skill-Based Volunteers:</strong> Offer professional skills (medical, educational, technical)</li>
+                            <li><strong>International Volunteers:</strong> We accept international volunteers for periods of 1-12 months</li>
+                        </ul>
+                        <p>To apply, please fill out our volunteer application form which you can request by emailing <a href="mailto:volunteer@rufaglobal.org">volunteer@rufaglobal.org</a>.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What areas of Uganda do you work in?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>RUFA Global operates in multiple regions across Uganda, with a focus on underserved rural communities. Our current active regions include:</p>
+                        <ul>
+                            <li><strong>Central Region:</strong> Kampala, Wakiso, Mukono</li>
+                            <li><strong>Eastern Region:</strong> Karamoja, Kaberamaido, Kihihi</li>
+                            <li><strong>Western Region:</strong> Bukomansimbi, Mbarara</li>
+                            <li><strong>Northern Region:</strong> Gulu, Lira</li>
+                        </ul>
+                        <p>We are continuously expanding our reach to serve more communities in need across the country.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How can my organization partner with RUFA Global?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We welcome partnerships with organizations that share our vision. Partnership opportunities include:</p>
+                        <ul>
+                            <li><strong>Corporate Partnerships:</strong> Employee engagement, CSR initiatives, cause marketing</li>
+                            <li><strong>NGO Collaborations:</strong> Joint programming, resource sharing, capacity building</li>
+                            <li><strong>Government Partnerships:</strong> Policy advocacy, program implementation support</li>
+                            <li><strong>Academic Partnerships:</strong> Research collaborations, internship programs</li>
+                        </ul>
+                        <p>For partnership inquiries, please email <a href="mailto:partnerships@rufaglobal.org">partnerships@rufaglobal.org</a> with details about your organization and proposed collaboration.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How can I get updates about your work?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Stay connected with our work through multiple channels:</p>
+                        <ul>
+                            <li><strong>Newsletter:</strong> Subscribe to our monthly newsletter for updates</li>
+                            <li><strong>Social Media:</strong> Follow us on Facebook, Twitter, Instagram, and LinkedIn</li>
+                            <li><strong>Annual Report:</strong> Download our annual report from our website</li>
+                            <li><strong>Events:</strong> Attend our fundraising and awareness events</li>
+                        </ul>
+                        <p>You can also visit our office to learn more about our programs and impact firsthand.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Are my donations tax-deductible?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, RUFA Global Organization is a registered non-profit organization in Uganda, and donations are tax-deductible to the extent allowed by law.</p>
+                        <p>We provide official donation receipts for all contributions, which can be used for tax purposes. For international donors, we recommend consulting with a tax professional in your country regarding the deductibility of donations to foreign charities.</p>
+                        <p>For specific questions about tax deductions, please contact <a href="mailto:finance@rufaglobal.org">finance@rufaglobal.org</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Contact Section -->
+    <section class="emergency-contact">
+        <div class="container">
+            <h2 class="emergency-title">Emergency Contact</h2>
+            <p class="emergency-text">For urgent matters requiring immediate attention outside of regular office hours, please contact our emergency line:</p>
+            <div class="emergency-number">+256 772 342831</div>
+            <p class="emergency-text">Available 24/7 for emergency situations related to our programs and beneficiaries.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <div class="logo-container" style="margin-bottom: 1rem;">
+                        <div class="logo-img" style="width: 50px; height: 50px; font-size: 1.5rem;">RGO</div>
+                        <div class="logo-text">
+                            <div class="logo" style="font-size: 1.5rem;">RUFA GLOBAL</div>
+                            <div class="org-tagline" style="font-size: 0.8rem;">TO RAISE THE FUTURE GENERATION</div>
+                        </div>
+                    </div>
+                    <p>We're here to answer your questions, discuss partnerships, and provide information about our programs. Reach out to us through any of our contact channels.</p>
+                    <p>Let's Make Change Together.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact Information</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Kalema Road, Kampala, Uganda</p>
+                    <p><i class="fas fa-phone"></i> +256 772 342831</p>
+                    <p><i class="fas fa-envelope"></i> info@rufaglobal.org</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 5:00 PM</p>
+                    <p><i class="fas fa-calendar"></i> Founded: 2018 | Active: 2025</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="programs.html">Programs</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="index.html#donate">Donate Now</a>
+                    <a href="#faqContainer">FAQs</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Other Resources</h4>
+                    <a href="programs.html">Our Programs</a>
+                    <a href="about.html">Annual Reports</a>
+                    <a href="index.html#donate">Ways to Give</a>
+                    <a href="mailto:volunteer@rufaglobal.org">Volunteer Opportunities</a>
+                    <a href="mailto:media@rufaglobal.org">Media Inquiries</a>
+                    <a href="mailto:careers@rufaglobal.org">Career Opportunities</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2018-<span id="currentYear"></span> RUFA GLOBAL ORGANIZATION. All rights reserved. | To Raise The Future Generation</p>
+                <p style="margin-top: 0.5rem;">Registered Non-Profit Organization in Uganda | Registration No: 12345/2018</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Display current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Form submission
+        document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            
+            // Simple validation
+            if (name && email && subject) {
+                // In a real application, you would send this data to a server
+                // For now, we'll show a success message
+                alert(`Thank you ${name}! Your message has been sent successfully. We will respond to your ${subject} inquiry at ${email} within 24-48 hours.`);
+                
+                // Reset form
+                document.getElementById('inquiryForm').reset();
+            } else {
+                alert('Please fill in all required fields marked with *.');
+            }
+        });
+        
+        // FAQ functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate child elements with delays
+                    if (entry.target.id === 'contactCards') {
+                        const contactCards = entry.target.querySelectorAll('.contact-card');
+                        contactCards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, index * 150);
+                        });
+                    }
+                    
+                    if (entry.target.id === 'faqContainer') {
+                        const faqItems = entry.target.querySelectorAll('.faq-item');
+                        faqItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('visible');
+                            }, index * 100);
+                        });
+                    }
+                    
+                    // Animate form elements
+                    if (entry.target.id === 'contactForm') {
+                        const formGroups = entry.target.querySelectorAll('.form-group');
+                        const submitButton = entry.target.querySelector('.submit-button');
+                        
+                        formGroups.forEach((group, index) => {
+                            setTimeout(() => {
+                                group.style.opacity = '1';
+                                group.style.transform = 'translateY(0)';
+                            }, index * 100 + 300);
+                        });
+                        
+                        setTimeout(() => {
+                            if (submitButton) {
+                                submitButton.style.opacity = '1';
+                                submitButton.style.transform = 'translateY(0)';
+                            }
+                        }, formGroups.length * 100 + 300);
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Observe sections for animation
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Observe specific elements
+        document.querySelectorAll('#contactCards, #contactForm, .office-hours, .location-map, .location-details, #faqContainer').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Social media hover effects
+        document.querySelectorAll('.faq-container a, .location-details a').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Social media icon hover effects
+        document.querySelectorAll('.office-hours a').forEach(icon => {
+            icon.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1)';
+                this.style.backgroundColor = '#ffcc00';
+            });
+            
+            icon.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+                this.style.backgroundColor = '#1a5276';
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a, .footer-column a, .contact-link').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Auto-scroll to form on page load if there's a hash
+        if (window.location.hash === '#contactForm') {
+            setTimeout(() => {
+                document.querySelector('#contactForm').scrollIntoView({ behavior: 'smooth' });
+            }, 500);
+        }
+    </script>
+</body>
+</html>
