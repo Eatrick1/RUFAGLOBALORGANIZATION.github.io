@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connect — Purified by Truth Ministries</title>
+  <link rel="stylesheet" href="css/main.css"/>
+  <style>
+
+    /* NEW HERE SPLIT */
+    .new-here {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .nh-photo {
+      position: relative;
+      min-height: 560px;
+      overflow: hidden;
+    }
+
+    .nh-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(0.45);
+    }
+
+    .nh-photo-shade {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 55%, var(--navy) 100%);
+    }
+
+    .nh-text {
+      padding: 90px 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .nh-text p {
+      font-size: 0.95rem;
+      color: #DDE3EA;
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    /* STEPS */
+    .steps-section { background: var(--sapph); padding: 96px 64px; }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      margin-top: 60px;
+    }
+
+    .step-card {
+      background: rgba(43,18,64,0.45);
+      padding: 48px 38px;
+    }
+
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 700;
+      color: rgba(201,168,76,0.12);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .step-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .step-body {
+      font-size: 0.88rem;
+      color: #B0BAC6;
+      line-height: 1.82;
+    }
+
+    /* GROUPS */
+    .groups-section { padding: 96px 64px; }
+
+    .groups-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3px;
+      margin-top: 60px;
+    }
+
+    .group-card {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      overflow: hidden;
+      background: var(--sapph);
+    }
+
+    .group-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.5);
+    }
+
+    .group-text { padding: 38px 36px; }
+
+    .group-type {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .group-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .group-desc {
+      font-size: 0.85rem;
+      color: #B0BAC6;
+      line-height: 1.78;
+      margin-bottom: 22px;
+    }
+
+    /* DISCIPLESHIP */
+    .disciple-section { background: var(--parch); padding: 96px 64px; }
+    .disciple-section .heading { color: var(--navy); }
+    .disciple-section .label { color: #8B6914; }
+
+    .disciple-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3px;
+      margin-top: 60px;
+    }
+
+    .disciple-card {
+      background: var(--white);
+      padding: 38px 30px;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .dc-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--navy);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .dc-desc {
+      font-size: 0.84rem;
+      color: #555;
+      line-height: 1.78;
+    }
+
+    /* CTA */
+    .connect-cta {
+      text-align: center;
+      padding: 100px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .connect-cta-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1600&q=80');
+      background-size: cover; background-position: center;
+      filter: brightness(0.1);
+    }
+
+    .connect-cta-inner {
+      position: relative; z-index: 2; max-width: 640px; margin: 0 auto;
+    }
+
+    .connect-cta h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700; color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .connect-cta p {
+      font-size: 0.94rem; color: #B0BAC6;
+      line-height: 1.85; margin-bottom: 40px;
+    }
+
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    @media (max-width: 900px) {
+      .new-here { grid-template-columns: 1fr; }
+      .nh-photo { min-height: 280px; }
+      .nh-text { padding: 56px 24px; }
+      .steps-section, .groups-section, .disciple-section, .connect-cta { padding: 64px 24px; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .groups-grid { grid-template-columns: 1fr; }
+      .group-card { grid-template-columns: 1fr; }
+      .group-photo { height: 200px; }
+      .group-photo img { height: 200px; }
+      .disciple-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .disciple-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <span class="nav-brand-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round">
+        <path d="M12 3v18M7 8h10"/>
+      </svg>
+    </span>
+    <span class="nav-brand-text">
+      <span class="nav-brand-name">Purified by Truth</span>
+      <span class="nav-brand-sub">Ministries</span>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="sermons.html">Sermons</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="connect.html" class="active">Connect</a></li>
+    <li><a href="blog.html">Devotionals</a></li>
+    <li><a href="prayer.html">Prayer</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="give.html" class="nav-give">Give</a>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">&times;</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="sermons.html">Sermons</a>
+  <a href="events.html">Events</a>
+  <a href="connect.html">Connect</a>
+  <a href="blog.html">Devotionals</a>
+  <a href="prayer.html">Prayer</a>
+  <a href="give.html">Give</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1600&q=80')"></div>
+  <div class="page-hero-gradient"></div>
+  <div class="page-hero-content">
+    <p class="page-eyebrow">You Belong Here</p>
+    <h1 class="page-title">Connect &amp; <em>Grow</em></h1>
+  </div>
+</div>
+
+<!-- NEW HERE -->
+<div class="new-here">
+  <div class="nh-photo">
+    <img src="https://images.unsplash.com/photo-1438232992991-995b671e5e8b?w=900&q=80" alt="Community" />
+    <div class="nh-photo-shade"></div>
+  </div>
+  <div class="nh-text">
+    <div class="label">New Here?</div>
+    <div class="gold-line"></div>
+    <h2 class="heading">You Are <em>Welcome</em> Here</h2>
+    <p>Whether you've been following Jesus for years or you're still figuring out who He is — there is a place for you here. We are not a perfect community, but we are a community being perfected by the truth of God's Word.</p>
+    <p>Come as you are. The Word will do the rest.</p>
+    <a href="contact.html" class="btn btn-gold" style="margin-top:10px;width:fit-content">Get in Touch</a>
+  </div>
+</div>
+
+<!-- STEPS -->
+<div class="steps-section" id="steps">
+  <div data-reveal>
+    <div class="label">Your Next Steps</div>
+    <h2 class="heading">How to <em>Get Started</em></h2>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card" data-reveal>
+      <div class="step-num">1</div>
+      <div class="step-title">Visit a Sunday Service</div>
+      <p class="step-body">Come experience worship, the Word, and community every Sunday at 9:00 AM. No pressure — just come and see.</p>
+    </div>
+    <div class="step-card" data-reveal>
+      <div class="step-num">2</div>
+      <div class="step-title">Join a Life Group</div>
+      <p class="step-body">Community happens in smaller circles. Life Groups meet weekly across the city — there's one near you.</p>
+    </div>
+    <div class="step-card" data-reveal>
+      <div class="step-num">3</div>
+      <div class="step-title">Enter Discipleship</div>
+      <p class="step-body">Discipleship is how we grow. Sign up for a discipleship track and go deeper in the Word, prayer, and Kingdom life.</p>
+    </div>
+  </div>
+</div>
+
+<!-- LIFE GROUPS -->
+<div class="groups-section" id="groups">
+  <div data-reveal>
+    <div class="label">Community</div>
+    <h2 class="heading">Find a <em>Life Group</em></h2>
+    <p class="subtext" style="margin-top:12px">Life Groups are where real relationships form. Find one that fits your season.</p>
+  </div>
+  <div class="groups-grid">
+    <div class="group-card" data-reveal>
+      <div class="group-photo">
+        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=400&q=80" alt="Men's group" />
+      </div>
+      <div class="group-text">
+        <div class="group-type">Men</div>
+        <h3 class="group-name">Men of the Kingdom</h3>
+        <p class="group-desc">A group for men pursuing purpose, integrity, and Kingdom leadership. Meets every Saturday morning.</p>
+        <a href="contact.html" class="btn btn-ghost" style="font-size:0.7rem;padding:10px 22px">Join This Group</a>
+      </div>
+    </div>
+    <div class="group-card" data-reveal>
+      <div class="group-photo">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80" alt="Women's group" />
+      </div>
+      <div class="group-text">
+        <div class="group-type">Women</div>
+        <h3 class="group-name">Daughters of Truth</h3>
+        <p class="group-desc">A community of women rooted in the Word, encouraging one another in faith, family, and purpose.</p>
+        <a href="contact.html" class="btn btn-ghost" style="font-size:0.7rem;padding:10px 22px">Join This Group</a>
+      </div>
+    </div>
+    <div class="group-card" data-reveal>
+      <div class="group-photo">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80" alt="Youth group" />
+      </div>
+      <div class="group-text">
+        <div class="group-type">Youth</div>
+        <h3 class="group-name">Kingdom Youth</h3>
+        <p class="group-desc">For young people who want to walk in Kingdom identity and authority. Real faith, real community.</p>
+        <a href="contact.html" class="btn btn-ghost" style="font-size:0.7rem;padding:10px 22px">Join This Group</a>
+      </div>
+    </div>
+    <div class="group-card" data-reveal>
+      <div class="group-photo">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&q=80" alt="New believers" />
+      </div>
+      <div class="group-text">
+        <div class="group-type">New Believers</div>
+        <h3 class="group-name">Foundations</h3>
+        <p class="group-desc">If you've recently given your life to Christ, this group will ground you in the basics of the faith.</p>
+        <a href="contact.html" class="btn btn-ghost" style="font-size:0.7rem;padding:10px 22px">Join This Group</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DISCIPLESHIP -->
+<div class="disciple-section" id="disciple">
+  <div data-reveal>
+    <div class="label">Grow in the Word</div>
+    <h2 class="heading heading-dark">Discipleship <em style="color:#8B6914">Tracks</em></h2>
+  </div>
+  <div class="disciple-grid">
+    <div class="disciple-card" data-reveal>
+      <div class="dc-title">Foundations of Faith</div>
+      <p class="dc-desc">Core Christian doctrines — salvation, baptism, the Holy Spirit, prayer, and the Church.</p>
+    </div>
+    <div class="disciple-card" data-reveal>
+      <div class="dc-title">Kingdom Identity</div>
+      <p class="dc-desc">Who you are in Christ and how to walk in the authority God has given every believer.</p>
+    </div>
+    <div class="disciple-card" data-reveal>
+      <div class="dc-title">Sanctification &amp; Truth</div>
+      <p class="dc-desc">The role of God's Word in purifying our hearts, minds, and daily lives.</p>
+    </div>
+    <div class="disciple-card" data-reveal>
+      <div class="dc-title">Missions &amp; Evangelism</div>
+      <p class="dc-desc">Going beyond the walls of the church to carry the Gospel to your community and the nations.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="connect-cta" id="missions">
+  <div class="connect-cta-bg"></div>
+  <div class="connect-cta-inner" data-reveal>
+    <div class="label" style="margin-bottom:28px">Take the Next Step</div>
+    <div class="gold-line" style="margin:0 auto 32px"></div>
+    <h2>Ready to Go Deeper?</h2>
+    <p>Reach out and we will connect you with the right group, track, or pastor. You don't have to figure it out alone.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn btn-gold">Contact Us</a>
+      <a href="events.html" class="btn btn-ghost">See Our Events</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">Purified by Truth Ministries</div>
+      <p class="footer-motto">"Purified by Truth. Rooted in Revelation. Advancing the Kingdom."</p>
+      <p class="footer-contact-info">Sunday: 9AM & 11AM<br>Mon & Wed: 5PM<br>Luwero, Uganda</p>
+    </div>
+    <div class="footer-col"><h4>Ministry</h4><ul><li><a href="about.html">About Us</a></li><li><a href="sermons.html">Sermons</a></li><li><a href="events.html">Events</a></li></ul></div>
+    <div class="footer-col"><h4>Connect</h4><ul><li><a href="connect.html">New Here?</a></li><li><a href="connect.html#groups">Life Groups</a></li><li><a href="connect.html#disciple">Discipleship</a></li><li><a href="prayer.html">Prayer Requests</a></li><li><a href="blog.html">Devotionals</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Get in Touch</a></li><li><a href="give.html">Give Online</a></li><li><a href="#">YouTube</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Purified by Truth Ministries. All rights reserved.</p>
+    <span class="footer-tagline-bottom">Truth · Revelation · Authority</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

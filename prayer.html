@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prayer Requests — Purified by Truth Ministries</title>
+  <link rel="stylesheet" href="css/main.css"/>
+  <style>
+
+    .prayer-body { padding: 72px 64px 96px; }
+
+    /* INTRO */
+    .prayer-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .prayer-intro-text p {
+      font-size: 0.95rem;
+      color: #DDE3EA;
+      line-height: 1.92;
+      margin-bottom: 20px;
+    }
+
+    .prayer-scripture {
+      border-left: 2px solid var(--gold);
+      padding: 22px 28px;
+      margin: 28px 0;
+      background: rgba(61,27,92,0.3);
+    }
+
+    .prayer-scripture blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--parch);
+      line-height: 1.78;
+      margin-bottom: 8px;
+    }
+
+    .prayer-scripture cite {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .prayer-photo {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .prayer-photo img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      filter: brightness(0.55);
+    }
+
+    .prayer-photo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(43,18,64,0.75) 0%, transparent 55%);
+    }
+
+    /* FORM SECTION */
+    .prayer-form-section {
+      background: var(--sapph);
+      padding: 80px 64px;
+    }
+
+    .prayer-form-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--navy);
+      border: 1px solid rgba(201,168,76,0.12);
+      padding: 56px 56px;
+    }
+
+    .pf-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .pf-sub {
+      font-size: 0.88rem;
+      color: #B0BAC6;
+      margin-bottom: 38px;
+      line-height: 1.75;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      color: #B0BAC6;
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(61,27,92,0.35);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      padding: 14px 18px;
+      outline: none;
+      transition: border-color 0.25s;
+      width: 100%;
+      resize: vertical;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(176,186,198,0.5);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-group select { appearance: none; cursor: pointer; }
+
+    .form-group select option {
+      background: var(--navy2);
+      color: var(--white);
+    }
+
+    .privacy-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 24px 0 28px;
+    }
+
+    .privacy-check input {
+      width: auto;
+      margin-top: 3px;
+      accent-color: var(--gold);
+    }
+
+    .privacy-check label {
+      font-size: 0.8rem;
+      color: #B0BAC6;
+      line-height: 1.6;
+      text-transform: none;
+      letter-spacing: normal;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .form-note {
+      font-size: 0.76rem;
+      color: #B0BAC6;
+      margin-top: 16px;
+      line-height: 1.7;
+    }
+
+    /* HOW WE PRAY */
+    .how-we-pray { padding: 96px 64px; }
+
+    .hwp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      margin-top: 56px;
+    }
+
+    .hwp-card {
+      background: var(--sapph);
+      padding: 44px 36px;
+      border-top: 2px solid transparent;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .hwp-card:hover {
+      border-top-color: var(--gold);
+      background: #5A2A8C;
+    }
+
+    .hwp-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: rgba(201,168,76,0.2);
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+
+    .hwp-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hwp-desc {
+      font-size: 0.86rem;
+      color: #C8D2DC;
+      line-height: 1.8;
+    }
+
+    /* URGENT */
+    .urgent-strip {
+      background: var(--gold);
+      padding: 56px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .urgent-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .urgent-text p {
+      font-size: 0.88rem;
+      color: rgba(43,18,64,0.75);
+    }
+
+    @media (max-width: 900px) {
+      .prayer-body { padding: 48px 24px 72px; }
+      .prayer-intro { grid-template-columns: 1fr; gap: 36px; margin-bottom: 56px; }
+      .prayer-photo img { height: 280px; }
+      .prayer-form-section, .how-we-pray { padding: 56px 24px; }
+      .prayer-form-wrap { padding: 36px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .hwp-grid { grid-template-columns: 1fr; }
+      .urgent-strip { padding: 40px 24px; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <span class="nav-brand-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round">
+        <path d="M12 3v18M7 8h10"/>
+      </svg>
+    </span>
+    <span class="nav-brand-text">
+      <span class="nav-brand-name">Purified by Truth</span>
+      <span class="nav-brand-sub">Ministries</span>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="sermons.html">Sermons</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="blog.html">Devotionals</a></li>
+    <li><a href="prayer.html" class="active">Prayer</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="give.html" class="nav-give">Give</a>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">&times;</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="sermons.html">Sermons</a>
+  <a href="events.html">Events</a>
+  <a href="blog.html">Devotionals</a>
+  <a href="connect.html">Connect</a>
+  <a href="prayer.html">Prayer</a>
+  <a href="give.html">Give</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1600&q=80')"></div>
+  <div class="page-hero-gradient"></div>
+  <div class="page-hero-content">
+    <p class="page-eyebrow">Bring It to the Father</p>
+    <h1 class="page-title">Prayer <em>Requests</em></h1>
+  </div>
+</div>
+
+<div class="prayer-body">
+
+  <!-- INTRO -->
+  <div class="prayer-intro">
+    <div class="prayer-intro-text" data-reveal>
+      <div class="label">You Are Not Alone</div>
+      <div class="gold-line"></div>
+      <h2 class="heading">Let Us <em>Pray With You</em></h2>
+      <p>Whatever you are carrying — sickness, a broken relationship, a financial burden, a decision you cannot see clearly — you do not have to carry it alone. Our prayer team stands ready to intercede with you and for you.</p>
+      <p>Submit your request below and our pastoral team will personally pray over it. All requests are treated with confidentiality and care.</p>
+      <div class="prayer-scripture">
+        <blockquote>"Is anyone among you suffering? Let him pray. Is anyone cheerful? Let him sing praise. Is anyone among you sick? Let him call for the elders of the church, and let them pray over him."</blockquote>
+        <cite>James 5:13–14</cite>
+      </div>
+    </div>
+    <div class="prayer-photo" data-reveal>
+      <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=900&q=80" alt="Prayer" />
+      <div class="prayer-photo-overlay"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FORM -->
+<div class="prayer-form-section">
+  <div class="prayer-form-wrap" data-reveal>
+    <h2 class="pf-title">Submit a Prayer Request</h2>
+    <p class="pf-sub">Fill in the form below. Our prayer team will lift your request before the Lord, and you may also be contacted for further pastoral support if needed.</p>
+
+    <form action="#" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="pfname">First Name</label>
+          <input type="text" id="pfname" name="first_name" placeholder="John" required />
+        </div>
+        <div class="form-group">
+          <label for="plname">Last Name</label>
+          <input type="text" id="plname" name="last_name" placeholder="Doe" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="pemail">Email Address</label>
+          <input type="email" id="pemail" name="email" placeholder="john@email.com" />
+        </div>
+        <div class="form-group">
+          <label for="pphone">Phone / WhatsApp</label>
+          <input type="tel" id="pphone" name="phone" placeholder="+256 7XX XXX XXX" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group full">
+          <label for="purgency">How would you describe this request?</label>
+          <select id="purgency" name="urgency">
+            <option value="">— Select an option —</option>
+            <option value="general">General Prayer</option>
+            <option value="health">Health &amp; Healing</option>
+            <option value="family">Family / Relationships</option>
+            <option value="finance">Provision / Finances</option>
+            <option value="guidance">Guidance / Decisions</option>
+            <option value="urgent">Urgent — Need Prayer Now</option>
+            <option value="thanksgiving">Thanksgiving / Testimony</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group full">
+          <label for="prequest">Your Prayer Request</label>
+          <textarea id="prequest" name="request" rows="6" placeholder="Share what's on your heart..."></textarea>
+        </div>
+      </div>
+
+      <div class="privacy-check">
+        <input type="checkbox" id="confidential" name="confidential" />
+        <label for="confidential">Keep this request confidential — only the pastoral team should see it (not shared in public prayer meetings).</label>
+      </div>
+
+      <button type="submit" class="btn btn-gold">Submit Prayer Request</button>
+      <p class="form-note">Every request is read and prayed over personally by our team. We will never share your information without your permission.</p>
+    </form>
+  </div>
+</div>
+
+<!-- HOW WE PRAY -->
+<div class="how-we-pray">
+  <div data-reveal>
+    <div class="label">What Happens Next</div>
+    <h2 class="heading">How We <em>Pray With You</em></h2>
+  </div>
+  <div class="hwp-grid">
+    <div class="hwp-card" data-reveal>
+      <div class="hwp-num">1</div>
+      <div class="hwp-title">Your Request Is Received</div>
+      <p class="hwp-desc">Your prayer request goes directly to our pastoral and intercessory prayer team — no public posting, no exposure.</p>
+    </div>
+    <div class="hwp-card" data-reveal>
+      <div class="hwp-num">2</div>
+      <div class="hwp-title">We Pray Over It</div>
+      <p class="hwp-desc">Our team intercedes for you specifically, often during our Friday prayer gathering and in personal devotion time.</p>
+    </div>
+    <div class="hwp-card" data-reveal>
+      <div class="hwp-num">3</div>
+      <div class="hwp-title">We Follow Up</div>
+      <p class="hwp-desc">If you've shared contact details, a member of our team may reach out to encourage you and check in on your situation.</p>
+    </div>
+  </div>
+</div>
+
+<!-- URGENT -->
+<div class="urgent-strip">
+  <div class="urgent-text">
+    <h3>Need Prayer Right Now?</h3>
+    <p>For urgent prayer needs, reach our team directly via phone or WhatsApp.</p>
+  </div>
+  <a href="tel:+256752686576" class="btn btn-navy">Call +256 752 686 576</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">Purified by Truth Ministries</div>
+      <p class="footer-motto">"Purified by Truth. Rooted in Revelation. Advancing the Kingdom."</p>
+      <p class="footer-contact-info">Sunday: 9AM & 11AM<br>Mon & Wed: 5PM<br>Luwero, Uganda</p>
+    </div>
+    <div class="footer-col"><h4>Ministry</h4><ul><li><a href="about.html">About Us</a></li><li><a href="sermons.html">Sermons</a></li><li><a href="events.html">Events</a></li></ul></div>
+    <div class="footer-col"><h4>Connect</h4><ul><li><a href="connect.html">New Here?</a></li><li><a href="prayer.html">Prayer Requests</a></li><li><a href="blog.html">Devotionals</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Get in Touch</a></li><li><a href="give.html">Give Online</a></li><li><a href="#">YouTube</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Purified by Truth Ministries. All rights reserved.</p>
+    <span class="footer-tagline-bottom">Truth · Revelation · Authority</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
