@@ -1161,6 +1161,22 @@ footer h4 {
 }
 .light-section .c-icon { background: rgba(198,161,75,.12); }
 
+/* Fix all text inside give/contact cards on light sections */
+.light-section .contact-info-card h3 { color: var(--text-dark); }
+.light-section .contact-info-card strong { color: var(--text-dark); }
+.light-section .contact-info-card p { color: var(--text-dark-mid); }
+.light-section .c-item p { color: var(--text-dark-mid); }
+.light-section .c-icon { color: var(--purple); background: rgba(74,42,115,.1); }
+.light-section .form-group label { color: var(--text-dark); }
+.light-section .section-header .eyebrow { color: var(--gold-dark); }
+.light-section .menu-card-body h3 { color: var(--text-dark); }
+.light-section .menu-card-body p { color: var(--text-dark-mid); }
+.light-section .menu-card-footer .price { color: var(--purple); }
+.light-section .pillar-node h3 { color: var(--text-dark); }
+.light-section .pillar-node p { color: var(--text-dark-mid); }
+.light-section .founder-grid h3 { color: var(--text-dark); }
+.light-section .founder-grid p  { color: var(--text-dark-mid); }
+
 /* ── Elegant ampersand treatment ──────────────────────────── */
 .amp {
   font-family: var(--font-display);

@@ -112,3 +112,93 @@
 
   .footer-socials { flex-wrap: wrap; }
 }
+
+/* ============================================================
+   Purified By Truth Ministries — Mobile Fixes
+   ============================================================ */
+
+/* ── Founder / Chef section ────────────────────────────────── */
+/* Stack image above text on all screens < 768px */
+@media (max-width: 768px) {
+  .founder-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    text-align: center;
+  }
+  .founder-grid .chef-img {
+    width: 180px !important;
+    height: 180px !important;
+    object-fit: cover;
+    border-radius: 50% !important;
+    margin: 0 auto;
+    display: block;
+  }
+  .founder-grid h3 { font-size: 1.5rem !important; }
+  .founder-grid p  { text-align: left; }
+
+  /* Give section payment cards: single column */
+  .give-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* Pillars photo strip — single column already set, ensure width */
+  .pillars-photo-strip img { height: 180px; }
+
+  /* Give photo banner */
+  .give-photo-banner img { height: 200px !important; }
+
+  /* Popup: full-width on mobile */
+  .latest-popup-card { max-width: 96vw !important; }
+
+  /* Contact grid always single column on mobile */
+  .contact-grid { grid-template-columns: 1fr !important; }
+
+  /* Stats bar on hero */
+  .hero-stats { flex-direction: column; gap: 12px; }
+
+  /* Footer service times list */
+  .hours-table td { font-size: .82rem; }
+}
+
+@media (max-width: 480px) {
+  /* Prevent any inline grid from overflowing */
+  [style*="grid-template-columns:1fr 1fr"],
+  [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Section heading font size */
+  .section-header h2 { font-size: clamp(1.6rem, 6vw, 2.2rem) !important; }
+
+  /* Pillars orbit — linear */
+  .pillar-node { padding: 20px 16px; }
+
+  /* Menu/event card max width */
+  .menu-card { max-width: 100%; }
+
+  /* Sermon & events cards full width */
+  .menu-grid { grid-template-columns: 1fr !important; }
+
+  /* About stats bar */
+  .about-stats { flex-direction: column; align-items: flex-start; gap: 10px; }
+
+  /* Give/donate cards */
+  .contact-info-card { padding: 20px 16px; }
+
+  /* Buttons side by side → stacked */
+  .give-actions { flex-direction: column; gap: 12px; }
+  .give-actions .btn { width: 100%; text-align: center; }
+
+  /* Latest popup image shorter */
+  .latest-popup-img { height: 150px !important; }
+
+  /* Form rows */
+  .form-row { grid-template-columns: 1fr !important; }
+
+  /* Sermon filter buttons wrap */
+  .menu-filters { flex-wrap: wrap; justify-content: center; }
+
+  /* Back to top button position */
+  #back-top { right: 12px; bottom: 16px; width: 42px; height: 42px; font-size: 1.2rem; }
+}
